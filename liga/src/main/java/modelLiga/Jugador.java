@@ -1,4 +1,4 @@
-package com.ligabetplay;
+package modelLiga;
 
 public class Jugador {
     private int id;

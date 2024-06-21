@@ -1,4 +1,4 @@
-package com.ligabetplay;
+package modelLiga;
 
 public class Partido {
     private String id;

@@ -1,7 +1,7 @@
-package com.ligabetplay;
+package modelLiga;
 import java.util.ArrayList;
 
-public class Equipo {
+public class Persona {
     private String id ;
     private String nombre;
     private String ciudad;
