@@ -83,4 +83,8 @@ public class Team {
     public void setLstPartidos(Match match) {
         this.lstPartidos.add(match);
     }
-}
+
+
+    }
+
+
