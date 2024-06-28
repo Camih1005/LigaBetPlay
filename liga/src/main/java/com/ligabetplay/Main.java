@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import com.ligabetplay.model.*;
+import com.ligabetplay.view.viewTeam;
 
 public class Main {
 
   
     private static final Map<Rol, String> credenciales = new HashMap<>();
+
+ 
 
     static {
         // Credenciales predefinidas para cada rol (en un sistema real, estas credenciales deberían ser gestionadas de manera segura)
@@ -21,6 +24,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+        viewTeam vt = new viewTeam();
+
+        vt.gestionEquipo();
+
         int saveNum;
         while (true) {
             System.out.println("1. Ingresar como ADMINISTRADOR");
