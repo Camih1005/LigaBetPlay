@@ -1,33 +1,24 @@
 package com.ligabetplay;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import com.ligabetplay.model.*;
-import com.ligabetplay.view.viewTeam;
 
 public class Main {
-
-  
-    private static final Map<Rol, String> credenciales = new HashMap<>();
-
- 
+    private static final Controller controlador = Controller.getInstance();
 
     static {
-        // Credenciales predefinidas para cada rol (en un sistema real, estas credenciales deberían ser gestionadas de manera segura)
-        credenciales.put(Rol.ADMINISTRADOR, "admin123");
-        credenciales.put(Rol.EQUIPO_TECNICO, "tecnico123");
-        credenciales.put(Rol.ARBITRO, "arbitro123");
-        credenciales.put(Rol.PERIODISTA, "periodista123");
-        credenciales.put(Rol.AFICIONADO, "aficionado123");
+
+        // Credenciales predefinidas para cada rol (en un sistema real, estas
+        // credenciales deberían ser gestionadas de manera segura)
+        controlador.credenciales.put(Rol.ADMINISTRADOR, "admin123");
+        controlador.credenciales.put(Rol.EQUIPO_TECNICO, "tecnico123");
+        controlador.credenciales.put(Rol.ARBITRO, "arbitro123");
+        controlador.credenciales.put(Rol.PERIODISTA, "periodista123");
+        controlador.credenciales.put(Rol.AFICIONADO, "aficionado123");
     }
 
     public static void main(String[] args) {
-
-        viewTeam vt = new viewTeam();
-
-        vt.gestionEquipo();
 
         int saveNum;
         while (true) {
@@ -51,15 +42,15 @@ public class Main {
                             saveNum = choice;
                             System.out.println("Rol seleccionado: " + rol);
                             AddPermis.addPermisoToRol(rol, permisos);
-                            
-                            //  inicio de sesión
+
+                            // inicio de sesión
                             System.out.println("\nIniciar sesión como " + rol + ":");
                             System.out.println("Ingrese la contraseña:");
 
                             String password = scanner.nextLine();
                             if (validarCredenciales(rol, password)) {
                                 System.out.println("Inicio de sesión exitoso como " + rol);
-                                //redirigir a la funcionalidad correspondiente al rol
+                                // redirigir a la funcionalidad correspondiente al rol
                                 // menu dependiendo del rol
                             } else {
                                 System.out.println("Contraseña incorrecta. Intenta nuevamente.");
@@ -81,6 +72,6 @@ public class Main {
 
     // Método para validar las credenciales ingresadas
     private static boolean validarCredenciales(Rol rol, String password) {
-        return password.equals(credenciales.get(rol));
+        return password.equals(controlador.credenciales.get(rol));
     }
 }
