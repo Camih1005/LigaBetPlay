@@ -24,9 +24,10 @@ public class AddPermis {
         switch (rol) {
             case ADMINISTRADOR:
                 // Asignar permisos específicos a ADMINISTRADOR
+                System.out.println("permiso = " + rol.getId());
                 break;
             case EQUIPO_TECNICO:
-          
+            System.out.println("permiso = " + rol.getId());
                 break;
            
             default:

@@ -3,9 +3,12 @@ package com.ligabetplay;
 import java.util.List;
 import java.util.Scanner;
 import com.ligabetplay.model.*;
+import com.ligabetplay.view.ViewAdmin;
 
 public class Main {
     private static final Controller controlador = Controller.getInstance();
+    private static Permiso[] permisos;
+    ViewAdmin viewAdmin = new ViewAdmin();
 
     static {
 
@@ -42,14 +45,12 @@ public class Main {
                             saveNum = choice;
                             System.out.println("Rol seleccionado: " + rol);
                             AddPermis.addPermisoToRol(rol, permisos);
-
-                            // inicio de sesión
                             System.out.println("\nIniciar sesión como " + rol + ":");
                             System.out.println("Ingrese la contraseña:");
-
                             String password = scanner.nextLine();
                             if (validarCredenciales(rol, password)) {
                                 System.out.println("Inicio de sesión exitoso como " + rol);
+                                ViewAdmin.start();
                                 // redirigir a la funcionalidad correspondiente al rol
                                 // menu dependiendo del rol
                             } else {
@@ -69,9 +70,12 @@ public class Main {
             System.out.println("Intento fallido");
         }
     }
+   
 
     // Método para validar las credenciales ingresadas
     private static boolean validarCredenciales(Rol rol, String password) {
         return password.equals(controlador.credenciales.get(rol));
     }
+
+   
 }
