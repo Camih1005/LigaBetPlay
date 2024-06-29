@@ -10,12 +10,12 @@ public class viewStadium {
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
     Validation val =  new Validation();
+    ShowValues mostrar = new ShowValues();
+
 
     public void gestionDeEstadios(){
 
         int choice = 0;
-        Boolean validar;
-
         System.out.println("\n" + //
                         "█▀▀ █▀▀ █▀ ▀█▀ █ █▀█ █▄░█   █▀▄ █▀▀   █▀▀ █▀ ▀█▀ ▄▀█ █▀▄ █ █▀█ █▀\n" + //
                         "█▄█ ██▄ ▄█ ░█░ █ █▄█ █░▀█   █▄▀ ██▄   ██▄ ▄█ ░█░ █▀█ █▄▀ █ █▄█ ▄█");
@@ -32,24 +32,17 @@ public class viewStadium {
 
             switch (choice) {
                 case 1:
-                    validar = addStadium();
-                    if(validar==false){
-                        continue;
-                    }
+                    addStadium();
                     break;
                 case 2:
-                    validar = editStadium();
-                    if(validar==false){
-                    continue;
-                    }
-                    
-                    
+                    editStadium();
                     break;
                 case 3:
-                    
+                    deleteStadium();
                     break;
             
                 default:
+                    System.out.println("Campo no Valido");
                     break;
             }
         
@@ -57,54 +50,95 @@ public class viewStadium {
 
     }
 
-    public boolean addStadium(){
+    public void addStadium(){
 
         Stadium estadio = new Stadium();
-
         Integer codigoEstadio = val.leerNumero("Digite el id del estadio: ", sc);
 
-        
-        if((!controlador.entrenadores.containsKey(codigoEstadio))){
-            System.out.println("Codigo Incorrecto");    
-            return false;
+        if((controlador.estadios.containsKey(codigoEstadio))){
+            System.out.println("Codigo ya Existe");    
+            return;
         }
 
         estadio.setId(codigoEstadio);
+        estadio.setNombre(val.leerdato("Digite el nombre del estadio: ", sc));
+        estadio.setUbicacion(val.leerdato("Digite la ubicacion del estadio: ", sc));
+        estadio.setCapacidad(val.leerNumero("Digite la capacidad del estadio: ", sc));
 
-        estadio.setNombre(val.leerdato("Digite el nombre del estadio", sc));
-        estadio.setUbicacion(val.leerdato("Digite la ubicacion del estadio", sc));
-        estadio.setCapacidad(val.leerNumero("Digite la capacidad del estadio", sc));
+        System.out.println("---------------------------------");
+        System.out.println("Creacion del estadio exitosa");  
+        System.out.println("---------------------------------");
 
         controlador.estadios.put(codigoEstadio, estadio);
-        System.out.println("Creacion del estadio exitosa");
 
-        return true;
+        return;
     }
 
 
-    public boolean editStadium(){
+    public void editStadium(){
 
-        int codigoEstadio = val.leerNumero("Digite el estadio a actualizar",sc);
+        boolean mostrarEstadios = mostrar.showStadiums();
+        if(mostrarEstadios==false){
+            return;
+        }
+
+        int codigoEstadio = val.leerNumero("Digite el estadio a actualizar: ",sc);
+        if(!controlador.estadios.containsKey(codigoEstadio)){
+            System.out.println("Error codigo no valido");
+            return ;
+        }
+
+        Stadium estadio = controlador.estadios.get(codigoEstadio);
 
         System.out.println("Campos de estadio");
         System.out.println("1. nombre");
         System.out.println("2. Ubicacion");
         System.out.println("3. Capacidad");
+
+        int opcion = val.leerNumero("Digite la opcion que desea editar: ",sc);
+
+
+        switch (opcion) {
+            case 1:
+                System.out.println("Campo Actual: " + estadio.getNombre());
+                estadio.setNombre(val.leerdato("Digite el nombre del estadio: ",sc ));
+                
+                break;
+            case 2:
+                System.out.println("Campo Actual: " + estadio.getUbicacion());
+                estadio.setUbicacion(val.leerdato("Digite la ubicacion del estadio: ",sc ));
+                break;
+            case 3:
+            System.out.println("Campo Actual: " + estadio.getCapacidad());
+            estadio.setCapacidad(val.leerNumero("Digite la capacidad del estadio: ",sc ));
+                break;
+            default:
+                break;
+        }
+        System.out.println("---------------------------------");
+        System.out.println("Campo actualizado  exitosamente");
+        System.out.println("---------------------------------");
+        return;
+    }
+
+
+    public void deleteStadium(){
         
+        boolean mostrarEstadios = mostrar.showStadiums();
+        if(mostrarEstadios==false){
+            return;
+        }
 
+        int codigoEstadio = val.leerNumero("\nDigite el estadio a eliminar: ",sc);
+        if(!controlador.estadios.containsKey(codigoEstadio)){
+            System.out.println("Error codigo no valido");
+            return ;
+        }
 
-        System.out.println("");
+        controlador.estadios.remove(codigoEstadio);
+        System.out.println("Estadio Eliminado Exitosamente");
 
-        int opcion = val.leerNumero("Digite la opcion que desea editar",sc);
-
-
-
-
-
-
-
-        return false;
-        
+        return;
     }
 
     

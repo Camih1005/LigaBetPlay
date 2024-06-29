@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Scanner;
 import com.ligabetplay.model.*;
 import com.ligabetplay.view.ViewAdmin;
+import com.ligabetplay.view.viewStadium;
 
 public class Main {
-    private static final Controller controlador = Controller.getInstance();
-    private static Permiso[] permisos;
-    ViewAdmin viewAdmin = new ViewAdmin();
 
-    static {
+    Controller controlador = Controller.getInstance();
+
+     {
 
         // Credenciales predefinidas para cada rol (en un sistema real, estas
         // credenciales deberían ser gestionadas de manera segura)
@@ -22,6 +22,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+       
+        
+        Permiso[] permiso;
+        viewStadium vistaEstadio = new viewStadium();
+        vistaEstadio.gestionDeEstadios();
 
         int saveNum;
         while (true) {
@@ -74,7 +80,7 @@ public class Main {
 
     // Método para validar las credenciales ingresadas
     private static boolean validarCredenciales(Rol rol, String password) {
-        return password.equals(controlador.credenciales.get(rol));
+        return password.equals(Controller.getInstance().credenciales.get(rol));
     }
 
    

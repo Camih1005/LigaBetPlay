@@ -12,9 +12,8 @@ public class ShowValues {
             System.out.println("No hay estadios disponibles");
             return false;
         }
-
         Controller.getInstance().estadios.forEach((key, value)-> 
-        System.out.println("key: " + key + "Nombre: " + value.getNombre()));
+        System.out.println("Codigo: " + key + ", Nombre: " + value.getNombre()));
         return true;
     };
 
@@ -24,9 +23,8 @@ public class ShowValues {
             System.out.println("No hay entrenadores disponibles");
             return false;
         }
-
         Controller.getInstance().entrenadores.forEach((key, value)-> 
-        System.out.println("key: " + key + "Nombre: " + value.getNombre()));
+        System.out.println("codigo: " + key + ", Nombre: " + value.getNombre()));
         return true;
     };
         
