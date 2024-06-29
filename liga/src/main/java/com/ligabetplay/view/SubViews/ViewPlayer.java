@@ -1,19 +1,21 @@
-package com.ligabetplay.view;
+package com.ligabetplay.view.SubViews;
 
 import java.util.Scanner;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.model.Player;
 import com.ligabetplay.model.Stadium;
+import com.ligabetplay.view.ShowValues;
+import com.ligabetplay.view.Validation;
 
-public class viewPlayer {
+public class ViewPlayer {
 
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
     Validation val =  new Validation();
     ShowValues mostrar = new ShowValues();
 
-    public void gestionDeJugadores(){
+    public void start(){
 
         int choice = 0;
 

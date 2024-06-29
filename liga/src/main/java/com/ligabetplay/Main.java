@@ -1,25 +1,19 @@
 package com.ligabetplay;
 
-import java.util.List;
+
 import java.util.Scanner;
 import com.ligabetplay.model.*;
-import com.ligabetplay.view.*;
 import com.ligabetplay.view.ViewAdmin;
-import com.ligabetplay.view.viewTeam;
+import com.ligabetplay.view.ViewCoach;
+
+
+
 
 public class Main {
 
     public static void main(String[] args) {
         Controller controlador = Controller.getInstance();
 
-        Permiso[] permiso;
-        viewStadium vistaEstadio = new viewStadium();
-        // viewStadium vistaEstadio = new viewStadium();
-        // vistaEstadio.gestionDeEstadios();
-        viewTeam vistaEquipo = new viewTeam();
-        vistaEquipo.gestionEquipo();
-
-        int saveNum;
         while (true) {
             System.out.println("1. Ingresar como ADMINISTRADOR");
             System.out.println("2. Ingresar como EQUIPO TECNICO");
@@ -34,13 +28,12 @@ public class Main {
                     System.out.println("Elegiste el número: " + choice);
                     scanner.nextLine();
 
-                    List<Permiso> permisos = AddPermis.agg();
+                 
                     Rol[] roles = Rol.values();
                     for (Rol rol : roles) {
                         if (choice == rol.getId()) {
-                            saveNum = choice;
                             System.out.println("Rol seleccionado: " + rol);
-                            AddPermis.addPermisoToRol(rol, permisos);
+                          
                             System.out.println("\nIniciar sesión como " + rol + ":");
                             System.out.println("Ingrese la contraseña:");
                             String password = scanner.nextLine();
@@ -74,6 +67,7 @@ public class Main {
             ViewAdmin.start();
                 break;
             case EQUIPO_TECNICO:
+            ViewCoach.start();
             System.out.println("AUN EN ARREGLOS");
                 break;
             case ARBITRO:
