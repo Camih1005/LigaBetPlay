@@ -14,7 +14,8 @@ public class viewTeam {
 
         Validation val = new Validation();
         Team equipo = new Team();
-        String codigoE;
+
+        int codigoE;
 
         int choice = 0;
 
@@ -45,7 +46,7 @@ public class viewTeam {
                     try {
                         String campoActualizado = "";
 
-                        codigoE = val.leerdato("Ingrese Codigo del Equipo: ",controlador.sc);
+                        codigoE = val.leerNumero("Ingrese Codigo del Equipo: ",controlador.sc);
                         equipo = controlador.equipos.get(codigoE);
 
                         System.out.println("\nCampos del equipo " + equipo.getNombre());
@@ -88,13 +89,13 @@ public class viewTeam {
 
                 case 3:
                 try {
-                    codigoE = val.leerdato("Ingrese Codigo del Equipo: ",controlador.sc);
+                    codigoE = val.leerNumero("Ingrese Codigo del Equipo: ",controlador.sc);
                     equipo = controlador.equipos.get(codigoE);
-                    Enumeration<String> llaves = controlador.equipos.keys();
-                    String llave = "";
+                    Enumeration<Integer> llaves = controlador.equipos.keys();
+                    int llave;
                     while (llaves.hasMoreElements()) {
-                        llave = String.valueOf(llaves.nextElement());
-                        if (codigoE.equals(llave)) {
+                        llave = llaves.nextElement();
+                        if (codigoE == llave) {
                             controlador.equipos.remove(codigoE);
                             System.out.println("Equipo " + equipo.getNombre() + " eliminado");
                             break;
@@ -115,25 +116,30 @@ public class viewTeam {
 
     
     public static  boolean addTeam(Scanner sc, Validation val){
+        
         Team equipo = new Team();
-
         ShowValues imprimir = new ShowValues();
-        String codigoE = val.leerdato("Ingrese el codigo del equipo: ", controlador.sc);
+        
+        int codigoE = val.leerNumero("Ingrese el codigo del equipo: ", controlador.sc);
             
         if (controlador.equipos.containsKey(codigoE)) {
             System.out.println("Error: Codigo ya Existe");
                 return false;
         }
+
         equipo.setNombre(val.leerdato("Ingrese Nombre del equipo: ",controlador.sc));
         equipo.setCiudad(val.leerdato("Ingrese la ciudad: ",controlador.sc));
+
         Boolean bandera = imprimir.showStadiums();
         if (bandera == true) {
-            Integer codigoEstadio = val.leerNumero("Ingrese el codigo del estadio donde juega: ",controlador.sc);
         
-        if(controlador.estadios.containsKey(String.valueOf(codigoEstadio))){
-                equipo.setEstadio(controlador.estadios.get(String.valueOf(codigoEstadio)).getNombre());
+        Integer codigoEstadio = val.leerNumero("Ingrese el codigo del estadio donde juega: ",controlador.sc);
+        
+        if(controlador.estadios.containsKey(codigoEstadio)){
+                equipo.setEstadio(controlador.estadios.get(codigoEstadio).getNombre());
             }else{
-                System.out.println("Codigo Erroneo");
+                System.out.println("No existe el codigo");
+                return false;
             }  
         }
 
@@ -143,10 +149,10 @@ public class viewTeam {
             if (bandera == true) {
                 Integer codigoEntrenador = val.leerNumero("Ingrese el codigo del entrenador donde juega: ",controlador.sc);
 
-                if(controlador.entrenadores.containsKey(String.valueOf(codigoEntrenador))){
-                    equipo.setCoach(controlador.entrenadores.get(String.valueOf(codigoEntrenador)).getNombre());
+                if(controlador.entrenadores.containsKey(codigoEntrenador)){
+                    equipo.setCoach(controlador.entrenadores.get(codigoEntrenador).getNombre());
                 }else{
-                    System.out.println("----Codigo Erroneo------");
+                    System.out.println("----No existe codigo------");
                 }  
             }
 

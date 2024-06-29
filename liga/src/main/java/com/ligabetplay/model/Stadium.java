@@ -4,17 +4,21 @@ public class Stadium {
     private Integer id;
     private String nombre;
     private String ubicacion;
-    private String capacidad;
+    private int capacidad;
 
     public Stadium() {
     }
 
-    public Stadium(Integer id, String nombre, String ubicacion, String capacidad) {
+  
+
+    public Stadium(Integer id, String nombre, String ubicacion, int capacidad) {
         this.id = id;
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.capacidad = capacidad;
     }
+
+
 
     public Integer getId() {
         return id;
@@ -40,12 +44,16 @@ public class Stadium {
         this.ubicacion = ubicacion;
     }
 
-    public String getCapacidad() {
+    public int getCapacidad() {
         return capacidad;
     }
 
-    public void setCapacidad(String capacidad) {
+
+
+    public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
+
+    
 
 }
