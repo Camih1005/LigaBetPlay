@@ -24,6 +24,7 @@ public class viewTeam {
                         "█▄█ ██▄ ▄█ ░█░ █ █▄█ █░▀█   █▄▀ ██▄   ██▄ ▀▀█ █▄█ █ █▀▀ █▄█");
 
         while (true) {
+            
             System.out.println("\n1. Agregar Equipo");
             System.out.println("2. Editar Equipo");
             System.out.println("3. Eliminar Equipo");

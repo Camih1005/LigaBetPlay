@@ -3,31 +3,15 @@ package com.ligabetplay;
 import java.util.List;
 import java.util.Scanner;
 import com.ligabetplay.model.*;
-import com.ligabetplay.view.ViewAdmin;
-import com.ligabetplay.view.viewStadium;
+import com.ligabetplay.view.*;
 
 public class Main {
 
-    Controller controlador = Controller.getInstance();
-
-     {
-
-        // Credenciales predefinidas para cada rol (en un sistema real, estas
-        // credenciales deberían ser gestionadas de manera segura)
-        controlador.credenciales.put(Rol.ADMINISTRADOR, "admin123");
-        controlador.credenciales.put(Rol.EQUIPO_TECNICO, "tecnico123");
-        controlador.credenciales.put(Rol.ARBITRO, "arbitro123");
-        controlador.credenciales.put(Rol.PERIODISTA, "periodista123");
-        controlador.credenciales.put(Rol.AFICIONADO, "aficionado123");
-    }
-
     public static void main(String[] args) {
+        Controller controlador = Controller.getInstance();
 
-       
-        
         Permiso[] permiso;
         viewStadium vistaEstadio = new viewStadium();
-        vistaEstadio.gestionDeEstadios();
 
         int saveNum;
         while (true) {
@@ -56,12 +40,9 @@ public class Main {
                             String password = scanner.nextLine();
                             if (validarCredenciales(rol, password)) {
                                 System.out.println("Inicio de sesión exitoso como " + rol);
-                                ViewAdmin.start();
-                                // redirigir a la funcionalidad correspondiente al rol
-                                // menu dependiendo del rol
+                                mostrarMenu(rol);
                             } else {
                                 System.out.println("Contraseña incorrecta. Intenta nuevamente.");
-                                return;
                             }
                             return;
                         }
@@ -76,12 +57,33 @@ public class Main {
             System.out.println("Intento fallido");
         }
     }
-   
 
-    // Método para validar las credenciales ingresadas
     private static boolean validarCredenciales(Rol rol, String password) {
         return password.equals(Controller.getInstance().credenciales.get(rol));
     }
 
-   
+    private static void mostrarMenu(Rol rol) {
+        switch (rol) {
+            case ADMINISTRADOR:
+            ViewAdmin.start();
+                break;
+            case EQUIPO_TECNICO:
+            System.out.println("AUN EN ARREGLOS");
+                break;
+            case ARBITRO:
+            System.out.println("AUN EN ARREGLOS");
+                break;
+            case PERIODISTA:
+            System.out.println("AUN EN ARREGLOS");
+                break;
+            case AFICIONADO:
+            System.out.println("AUN EN ARREGLOS");
+                break;
+            default:
+            System.out.println("Rol no reconocido.");
+                break;
+        }
+    }
+
+
 }
