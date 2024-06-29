@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 import com.ligabetplay.model.*;
 import com.ligabetplay.view.*;
+import com.ligabetplay.view.ViewAdmin;
+import com.ligabetplay.view.viewTeam;
 
 public class Main {
 
@@ -12,6 +14,10 @@ public class Main {
 
         Permiso[] permiso;
         viewStadium vistaEstadio = new viewStadium();
+        // viewStadium vistaEstadio = new viewStadium();
+        // vistaEstadio.gestionDeEstadios();
+        viewTeam vistaEquipo = new viewTeam();
+        vistaEquipo.gestionEquipo();
 
         int saveNum;
         while (true) {

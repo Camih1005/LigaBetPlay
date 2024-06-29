@@ -64,12 +64,13 @@ public class viewStadium {
         estadio.setNombre(val.leerdato("Digite el nombre del estadio: ", sc));
         estadio.setUbicacion(val.leerdato("Digite la ubicacion del estadio: ", sc));
         estadio.setCapacidad(val.leerNumero("Digite la capacidad del estadio: ", sc));
+        controlador.estadios.put(codigoEstadio, estadio);
 
         System.out.println("---------------------------------");
         System.out.println("Creacion del estadio exitosa");  
         System.out.println("---------------------------------");
 
-        controlador.estadios.put(codigoEstadio, estadio);
+       
 
         return;
     }
@@ -134,7 +135,7 @@ public class viewStadium {
             System.out.println("Error codigo no valido");
             return ;
         }
-
+        
         controlador.estadios.remove(codigoEstadio);
         System.out.println("Estadio Eliminado Exitosamente");
 

@@ -15,7 +15,7 @@ public class User extends Person{
         this.rol = rol;
     }
 
-    public User(String id, String nombre, String email, String password, String rol) {
+    public User(int id, String nombre, String email, String password, String rol) {
         super(id, nombre);
         this.email = email;
         this.password = password;

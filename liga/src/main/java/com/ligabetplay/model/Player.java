@@ -3,12 +3,12 @@ package com.ligabetplay.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player extends Person{
     private int edad;
     private String posicion;
     private String nacionalidad;
     private int numeroCamiseta;
-    private Team equipo;
+    private String equipo;
     private List<Injury> lstLesiones;
     private List<Performance> lstRendimientos;
     
@@ -18,8 +18,9 @@ public class Player {
         lstRendimientos = new ArrayList<Performance>();
     }
 
-    public Player(int edad, String posicion, String nacionalidad, int numeroCamiseta, Team equipo,
-            List<Injury> lstLesiones, List<Performance> lstRendimientos) {
+    public Player(int id, String nombre, int edad, String posicion, String nacionalidad, int numeroCamiseta,
+            String equipo, List<Injury> lstLesiones, List<Performance> lstRendimientos) {
+        super(id, nombre);
         this.edad = edad;
         this.posicion = posicion;
         this.nacionalidad = nacionalidad;
@@ -61,11 +62,11 @@ public class Player {
         this.numeroCamiseta = numeroCamiseta;
     }
 
-    public Team getEquipo() {
+    public String getEquipo() {
         return equipo;
     }
 
-    public void setEquipo(Team equipo) {
+    public void setEquipo(String equipo) {
         this.equipo = equipo;
     }
 
