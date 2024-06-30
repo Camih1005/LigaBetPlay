@@ -10,7 +10,6 @@ public class ViewTeam {
 
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
-    Validation val =  new Validation();
     ShowValues mostrar = new ShowValues();
 
     public void start(){
@@ -28,7 +27,7 @@ public class ViewTeam {
             System.out.println("3. Eliminar Equipo");
             System.out.println("4. Volver");
 
-            choice = Integer.parseInt(val.leerdato("Elija una opcion: ", controlador.sc));
+            choice = Integer.parseInt(Validation.leerdato("Elija una opcion: ", controlador.sc));
             System.out.println("\n");
 
 
@@ -56,20 +55,20 @@ public class ViewTeam {
         boolean bandera=true;
         Team equipo = new Team();
 
-        int codigoE = val.leerNumero("Ingrese el codigo del equipo: ", controlador.sc);
+        int codigoE = Validation.leerNumero("Ingrese el codigo del equipo: ", controlador.sc);
             
         if (controlador.equipos.containsKey(codigoE)) {
             System.out.println("Error: Codigo ya Existe");
                 return;
         }
 
-        equipo.setNombre(val.leerdato("Ingrese Nombre del equipo: ",controlador.sc));
-        equipo.setCiudad(val.leerdato("Ingrese la ciudad: ",controlador.sc));
+        equipo.setNombre(Validation.leerdato("Ingrese Nombre del equipo: ",controlador.sc));
+        equipo.setCiudad(Validation.leerdato("Ingrese la ciudad: ",controlador.sc));
 
         boolean mostrarEstadio = mostrar.showStadiums();
         if(mostrarEstadio==false){ bandera = false; }
             if(bandera==true){
-                int codigoEstadio = val.leerNumero("Digite el codigo del estadio: ",sc);
+                int codigoEstadio = Validation.leerNumero("Digite el codigo del estadio: ",sc);
                 if(!controlador.estadios.containsKey(codigoEstadio)){ System.out.println("Error codigo no valido"); bandera=false;}
                     if(bandera==true){equipo.setEstadio(controlador.estadios.get(codigoEstadio).getNombre());}
             }
@@ -79,7 +78,7 @@ public class ViewTeam {
         boolean mostrarEntrenadores = mostrar.showCoach();
         if(mostrarEntrenadores==false){ bandera = false; }
             if(bandera==true){
-                int codigoEntrenador = val.leerNumero("Digite el codigo del entrenador: ",sc);
+                int codigoEntrenador = Validation.leerNumero("Digite el codigo del entrenador: ",sc);
                 if(!controlador.entrenadores.containsKey(codigoEntrenador)){ System.out.println("Error codigo no valido"); bandera=false;}
                     if(bandera==true){equipo.setCoach(controlador.entrenadores.get(codigoEntrenador).getNombre());}
             }
@@ -98,7 +97,7 @@ public class ViewTeam {
             return;
         }
 
-        int codigoEquipo = val.leerNumero("Digite el equipo a actualizar: ",sc);
+        int codigoEquipo = Validation.leerNumero("Digite el equipo a actualizar: ",sc);
         if(!controlador.equipos.containsKey(codigoEquipo)){
             System.out.println("Error codigo no valido");
             return ;
@@ -112,29 +111,29 @@ public class ViewTeam {
         System.out.println("3. Estadio");
         System.out.println("4. Couch");
 
-        int opcion = val.leerNumero("Digite la opcion que desea editar: ",sc);
+        int opcion = Validation.leerNumero("Digite la opcion que desea editar: ",sc);
 
 
         switch (opcion) {
             case 1:
                 System.out.println("Campo Actual: " + equipo.getNombre());
-                equipo.setNombre(val.leerdato("Digite el nombre del equipo: ",sc ));
+                equipo.setNombre(Validation.leerdato("Digite el nombre del equipo: ",sc ));
                 
                 break;
             case 2:
                 System.out.println("Campo Actual: " + equipo.getCiudad());
-                equipo.setCiudad(val.leerdato("Digite la Ciudad del equipo: ",sc ));
+                equipo.setCiudad(Validation.leerdato("Digite la Ciudad del equipo: ",sc ));
                 break;
             case 3:
                 boolean mostrarEstadio = mostrar.showStadiums();
                 if(mostrarEstadio==false){ return; }
-                int codigoEstadio = val.leerNumero("Digite el codigo del estadio: ",sc);
+                int codigoEstadio = Validation.leerNumero("Digite el codigo del estadio: ",sc);
                 if(!controlador.estadios.containsKey(codigoEstadio)){ System.out.println("Error codigo no valido"); return;}
                 equipo.setEstadio(controlador.estadios.get(codigoEstadio).getNombre());
             case 4:
                 boolean mostrarCoach = mostrar.showCoach();
                 if(mostrarCoach==false){ return; }
-                int codigoCoach = val.leerNumero("Digite el codigo del coach: ",sc);
+                int codigoCoach = Validation.leerNumero("Digite el codigo del coach: ",sc);
                 if(!controlador.entrenadores.containsKey(codigoCoach)){ System.out.println("Error codigo no valido"); return;}
                 equipo.setCoach(controlador.entrenadores.get(codigoCoach).getNombre());
             default:
@@ -154,7 +153,7 @@ public class ViewTeam {
             return;
         }
 
-        int codigoEquipo = val.leerNumero("\nDigite el equipo a eliminar: ",sc);
+        int codigoEquipo = Validation.leerNumero("\nDigite el equipo a eliminar: ",sc);
         if(!controlador.equipos.containsKey(codigoEquipo)){
             System.out.println("Error codigo no valido");
             return ;

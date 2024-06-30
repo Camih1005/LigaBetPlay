@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.model.Player;
-import com.ligabetplay.model.Stadium;
 import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
 
@@ -32,7 +31,7 @@ public class ViewPlayer {
             System.out.println("3. Eliminar Jugador");
             System.out.println("4. Volver");
 
-            choice = Integer.parseInt(val.leerdato("Elija una opcion: ", controlador.sc));
+            choice = Integer.parseInt(Validation.leerdato("Elija una opcion: ", controlador.sc));
             System.out.println("\n");
 
             switch (choice) {
@@ -58,7 +57,7 @@ public class ViewPlayer {
         boolean bandera = true;
         
         Player jugador = new Player();
-        Integer codigoJugador = val.leerNumero("Digite el id del jugador: ", sc);
+        Integer codigoJugador = Validation.leerNumero("Digite el id del jugador: ", sc);
 
         if((controlador.jugadores.containsKey(codigoJugador))){
             System.out.println("Codigo ya Existe");    
@@ -66,17 +65,17 @@ public class ViewPlayer {
         }
 
         jugador.setId(codigoJugador);
-        jugador.setNombre(val.leerdato("Digite el nombre del jugador: ", sc));
-        jugador.setEdad(val.leerNumero("Digite la edad del jugador: ",sc));
-        jugador.setPosicion(val.leerdato("Digite la posicion del jugador: ",sc));
-        jugador.setNacionalidad(val.leerdato("Digite la nacionalidad del jugador: ",sc));
-        jugador.setNumeroCamiseta(val.leerNumero("Digite el numero de la camisa del jugador", sc));
+        jugador.setNombre(Validation.leerdato("Digite el nombre del jugador: ", sc));
+        jugador.setEdad(Validation.leerNumero("Digite la edad del jugador: ",sc));
+        jugador.setPosicion(Validation.leerdato("Digite la posicion del jugador: ",sc));
+        jugador.setNacionalidad(Validation.leerdato("Digite la nacionalidad del jugador: ",sc));
+        jugador.setNumeroCamiseta(Validation.leerNumero("Digite el numero de la camisa del jugador", sc));
         
         boolean mostrarEquipo = mostrar.showTeam();
         
         if(mostrarEquipo==false){ bandera = false; }
             if(bandera==true){
-                int codigoEquipo = val.leerNumero("Digite el codigo del equipo: ",sc);
+                int codigoEquipo = Validation.leerNumero("Digite el codigo del equipo: ",sc);
                 if(!controlador.estadios.containsKey(codigoEquipo)){ System.out.println("Error codigo no valido"); bandera=false;}
                     if(bandera==true){jugador.setEquipo(controlador.estadios.get(codigoEquipo).getNombre());}
             }

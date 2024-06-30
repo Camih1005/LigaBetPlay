@@ -4,7 +4,7 @@ package com.ligabetplay;
 import java.util.Scanner;
 import com.ligabetplay.model.*;
 import com.ligabetplay.view.ViewAdmin;
-import com.ligabetplay.view.ViewCoach;
+import com.ligabetplay.view.SubViews.ViewCoach;
 
 
 

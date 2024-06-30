@@ -1,9 +1,9 @@
-package com.ligabetplay.view;
+package com.ligabetplay.view.SubViews;
 
 import java.util.Scanner;
 
 import com.ligabetplay.Controller;
-import com.ligabetplay.view.SubViews.ViewPlayer;
+import com.ligabetplay.view.Validation;
 
 public class ViewCoach {
 
