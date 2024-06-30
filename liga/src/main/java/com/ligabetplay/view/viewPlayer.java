@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.model.Player;
-import com.ligabetplay.model.Stadium;
+import com.ligabetplay.model.Team;
 
 public class viewPlayer {
 
@@ -13,7 +13,7 @@ public class viewPlayer {
     Validation val =  new Validation();
     ShowValues mostrar = new ShowValues();
 
-    public void gestionDeJugadores(){
+    public void start(){
 
         int choice = 0;
 
@@ -71,20 +71,103 @@ public class viewPlayer {
         jugador.setNumeroCamiseta(val.leerNumero("Digite el numero de la camisa del jugador", sc));
         
         boolean mostrarEquipo = mostrar.showTeam();
-        
         if(mostrarEquipo==false){ bandera = false; }
             if(bandera==true){
                 int codigoEquipo = val.leerNumero("Digite el codigo del equipo: ",sc);
-                if(!controlador.estadios.containsKey(codigoEquipo)){ System.out.println("Error codigo no valido"); bandera=false;}
-                    if(bandera==true){jugador.setEquipo(controlador.estadios.get(codigoEquipo).getNombre());}
+                if(!controlador.equipos.containsKey(codigoEquipo)){ System.out.println("Error codigo no valido"); bandera=false;}
+                    if(bandera==true){jugador.setEquipo(controlador.equipos.get(codigoEquipo).getNombre());
+                    controlador.equipos.get(codigoEquipo).setLstJugadores(jugador);}
             }
+
+        controlador.jugadores.put(codigoJugador, jugador);
+        System.out.println("---------------------------------");
+        System.out.println("Creacion del equipo exitosa");  
+        System.out.println("---------------------------------");
     }
 
     public void editPlayer(){
+        
+        boolean mostrarJugadores = mostrar.showPlayer();
+        if(mostrarJugadores==false){
+            return;
+        }
+
+        int codigoJugador = val.leerNumero("Digite el jugador a actualizar: ",sc);
+        if(!controlador.jugadores.containsKey(codigoJugador)){
+            System.out.println("Error codigo no valido");
+            return ;
+        }
+
+        Player jugador = controlador.jugadores.get(codigoJugador);
+
+        System.out.println("Campos de jugador");
+        System.out.println("1. Nombre");
+        System.out.println("2. Edad");
+        System.out.println("3. Posicion");
+        System.out.println("4. Nacionalidad");
+        System.out.println("5. Numero de camiseta");
+
+
+        int opcion = val.leerNumero("Digite la opcion que desea editar: ",sc);
+
+        switch (opcion) {
+            case 1:
+                System.out.println("Campo Actual: " + jugador.getNombre());
+                jugador.setNombre(val.leerdato("Digite el nombre del jugador: ",sc ));
+                break;
+            case 2:
+                System.out.println("Campo Actual: " + jugador.getEdad());
+                jugador.setEdad(val.leerNumero("Digite la Edad del jugador: ",sc ));
+                break;
+            case 3:
+                System.out.println("Campo Actual: " + jugador.getPosicion() );
+                jugador.setPosicion(val.leerdato("Digite la posicion del jugador: ",sc ));
+                break;
+            case 4: 
+                System.out.println("Campo Actual: "+ jugador.getNacionalidad());
+                jugador.setNacionalidad(val.leerdato("Digite la nacionalidad del jugador", sc));
+
+            case 5: 
+                System.out.println("Campo Actual: " + jugador.getNumeroCamiseta());
+                jugador.setNumeroCamiseta(val.leerNumero("Digite el numero de la camiseta del jugador", sc));
+            default:
+                break;
+        }
+        System.out.println("---------------------------------");
+        System.out.println("Campo actualizado  exitosamente");
+        System.out.println("---------------------------------");
+        return;
 
     }
 
     public void deletePlayer(){
+         
+        boolean mostrarJugadores = mostrar.showPlayer();
+        if(mostrarJugadores==false){
+            return;
+        }
+
+        int codigoJugador = val.leerNumero("\nDigite el jugador a eliminar: ",sc);
+        if(!controlador.jugadores.containsKey(codigoJugador)){
+            System.out.println("Error codigo no valido");
+            return ;
+        }
+        controlador.jugadores.remove(codigoJugador);
+
+        for (Integer key : controlador.equipos.keySet()) {
+            Team value = controlador.equipos.get(key);
+            for (Player elemento : value.getLstJugadores()) {
+                if(elemento.getId()==codigoJugador){
+                    controlador.equipos.get(key).getLstJugadores().remove(elemento);
+                    System.out.println("Estadio Eliminado Exitosamente");
+                    break;
+                }
+            }
+        }
+       
+        
+
+        return;
 
     }
 

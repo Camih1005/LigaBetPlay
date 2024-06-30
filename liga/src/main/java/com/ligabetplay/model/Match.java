@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Match {
-    private String id;
+    private int id;
     private Team equipoLocal;
     private Team equipoVisitante;
     private Date fecha;
@@ -25,7 +25,7 @@ public class Match {
         lstIncidentes = new ArrayList<Incident>();
     }
 
-    public Match(String id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio,
+    public Match(int id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio,
             List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes, String resultado) {
         this.id = id;
         this.equipoLocal = equipoLocal;
@@ -39,11 +39,11 @@ public class Match {
         this.resultado = resultado;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

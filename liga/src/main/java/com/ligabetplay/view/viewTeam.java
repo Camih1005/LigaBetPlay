@@ -11,7 +11,7 @@ public class viewTeam {
     Validation val =  new Validation();
     ShowValues mostrar = new ShowValues();
 
-    public void gestionEquipo(){
+    public void start(){
         
         int choice = 0;
 
@@ -91,7 +91,7 @@ public class viewTeam {
     
     public void editTeam(){
             
-        boolean mostrarEquipos = mostrar.showStadiums();
+        boolean mostrarEquipos = mostrar.showTeam();
         if(mostrarEquipos==false){
             return;
         }

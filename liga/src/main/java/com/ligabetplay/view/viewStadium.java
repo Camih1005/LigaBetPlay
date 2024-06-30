@@ -13,7 +13,7 @@ public class viewStadium {
     ShowValues mostrar = new ShowValues();
 
 
-    public void gestionDeEstadios(){
+    public void start(){
 
         int choice = 0;
         System.out.println("\n" + //

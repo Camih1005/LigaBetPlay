@@ -48,6 +48,16 @@ public class ShowValues {
         return true;
     }
 
+    public boolean showPlayer(){
+        if(Controller.getInstance().jugadores.isEmpty()){
+            System.out.println("No hay jugadores disponibles");
+            return false;
+        }
+        Controller.getInstance().jugadores.forEach((key, value)-> 
+        System.out.println("codigo: " + key + ", Nombre: " + value.getNombre()));
+        return true;
+    }
+
     
         
 }

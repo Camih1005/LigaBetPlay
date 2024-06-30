@@ -4,6 +4,7 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 import com.ligabetplay.model.Coach;
+import com.ligabetplay.model.Match;
 import com.ligabetplay.model.Player;
 import com.ligabetplay.model.Rol;
 import com.ligabetplay.model.Stadium;
@@ -17,6 +18,8 @@ public class Controller {
     public Hashtable<Integer, Team> equipos = new Hashtable<>();
     public Hashtable<Integer, Player> jugadores = new Hashtable<>();
     public Hashtable<Integer, Coach> entrenadores = new Hashtable<>();
+    public Hashtable <Integer, Match> partidos = new Hashtable<>();
+    
 
     private static Controller controlador;
 

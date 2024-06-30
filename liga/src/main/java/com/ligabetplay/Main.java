@@ -3,22 +3,18 @@ package com.ligabetplay;
 import java.util.List;
 import java.util.Scanner;
 import com.ligabetplay.model.*;
-import com.ligabetplay.view.*;
 import com.ligabetplay.view.ViewAdmin;
+import com.ligabetplay.view.viewPlayer;
 import com.ligabetplay.view.viewTeam;
 
 public class Main {
 
     public static void main(String[] args) {
         Controller controlador = Controller.getInstance();
-
-        Permiso[] permiso;
-        viewStadium vistaEstadio = new viewStadium();
-        // viewStadium vistaEstadio = new viewStadium();
-        // vistaEstadio.gestionDeEstadios();
         viewTeam vistaEquipo = new viewTeam();
-        vistaEquipo.gestionEquipo();
-
+        vistaEquipo.start();
+        viewPlayer vistaJugador = new viewPlayer();
+        vistaJugador.start();
         int saveNum;
         while (true) {
             System.out.println("1. Ingresar como ADMINISTRADOR");
