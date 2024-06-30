@@ -11,7 +11,6 @@ public class ViewStadium {
 
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
-    Validation val =  new Validation();
     ShowValues mostrar = new ShowValues();
 
 
@@ -28,7 +27,7 @@ public class ViewStadium {
             System.out.println("3. Eliminar Estadio");
             System.out.println("4. Volver");
 
-            choice = Integer.parseInt(val.leerdato("Elija una opcion: ", controlador.sc));
+            choice = Integer.parseInt(Validation.leerdato("Elija una opcion: ", controlador.sc));
             System.out.println("\n");
           
 
@@ -55,7 +54,7 @@ public class ViewStadium {
     public void addStadium(){
 
         Stadium estadio = new Stadium();
-        Integer codigoEstadio = val.leerNumero("Digite el id del estadio: ", sc);
+        Integer codigoEstadio = Validation.leerNumero("Digite el id del estadio: ", sc);
 
         if((controlador.estadios.containsKey(codigoEstadio))){
             System.out.println("Codigo ya Existe");    
@@ -63,9 +62,9 @@ public class ViewStadium {
         }
 
         estadio.setId(codigoEstadio);
-        estadio.setNombre(val.leerdato("Digite el nombre del estadio: ", sc));
-        estadio.setUbicacion(val.leerdato("Digite la ubicacion del estadio: ", sc));
-        estadio.setCapacidad(val.leerNumero("Digite la capacidad del estadio: ", sc));
+        estadio.setNombre(Validation.leerdato("Digite el nombre del estadio: ", sc));
+        estadio.setUbicacion(Validation.leerdato("Digite la ubicacion del estadio: ", sc));
+        estadio.setCapacidad(Validation.leerNumero("Digite la capacidad del estadio: ", sc));
         controlador.estadios.put(codigoEstadio, estadio);
 
         System.out.println("---------------------------------");
@@ -85,7 +84,7 @@ public class ViewStadium {
             return;
         }
 
-        int codigoEstadio = val.leerNumero("Digite el estadio a actualizar: ",sc);
+        int codigoEstadio = Validation.leerNumero("Digite el estadio a actualizar: ",sc);
         if(!controlador.estadios.containsKey(codigoEstadio)){
             System.out.println("Error codigo no valido");
             return ;
@@ -98,22 +97,22 @@ public class ViewStadium {
         System.out.println("2. Ubicacion");
         System.out.println("3. Capacidad");
 
-        int opcion = val.leerNumero("Digite la opcion que desea editar: ",sc);
+        int opcion = Validation.leerNumero("Digite la opcion que desea editar: ",sc);
 
 
         switch (opcion) {
             case 1:
                 System.out.println("Campo Actual: " + estadio.getNombre());
-                estadio.setNombre(val.leerdato("Digite el nombre del estadio: ",sc ));
+                estadio.setNombre(Validation.leerdato("Digite el nombre del estadio: ",sc ));
                 
                 break;
             case 2:
                 System.out.println("Campo Actual: " + estadio.getUbicacion());
-                estadio.setUbicacion(val.leerdato("Digite la ubicacion del estadio: ",sc ));
+                estadio.setUbicacion(Validation.leerdato("Digite la ubicacion del estadio: ",sc ));
                 break;
             case 3:
             System.out.println("Campo Actual: " + estadio.getCapacidad());
-            estadio.setCapacidad(val.leerNumero("Digite la capacidad del estadio: ",sc ));
+            estadio.setCapacidad(Validation.leerNumero("Digite la capacidad del estadio: ",sc ));
                 break;
             default:
                 break;
@@ -132,7 +131,7 @@ public class ViewStadium {
             return;
         }
 
-        int codigoEstadio = val.leerNumero("\nDigite el estadio a eliminar: ",sc);
+        int codigoEstadio = Validation.leerNumero("\nDigite el estadio a eliminar: ",sc);
         if(!controlador.estadios.containsKey(codigoEstadio)){
             System.out.println("Error codigo no valido");
             return ;

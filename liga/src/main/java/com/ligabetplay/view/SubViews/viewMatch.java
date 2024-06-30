@@ -1,16 +1,17 @@
-package com.ligabetplay.view;
+package com.ligabetplay.view.SubViews;
 
 import java.util.Scanner;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.model.Match;
 import com.ligabetplay.model.Stadium;
+import com.ligabetplay.view.ShowValues;
+import com.ligabetplay.view.Validation;
 
 public class viewMatch {
 
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
-    Validation val =  new Validation();
     ShowValues mostrar = new ShowValues();
 
     public void start(){
@@ -25,7 +26,7 @@ public class viewMatch {
             System.out.println("3. Eliminar Partido");
             System.out.println("4. Volver");
 
-            choice = Integer.parseInt(val.leerdato("Elija una opcion: ", controlador.sc));
+            choice = Integer.parseInt(Validation.leerdato("Elija una opcion: ", controlador.sc));
             System.out.println("\n");
 
             switch (choice) {
@@ -50,7 +51,7 @@ public class viewMatch {
     public void addMatch(){
 
         Match partido = new Match();
-        Integer codigoPartido = val.leerNumero("Digite el id del Partido: ", sc);
+        Integer codigoPartido = Validation.leerNumero("Digite el id del Partido: ", sc);
 
         if((controlador.partidos.containsKey(codigoPartido))){
             System.out.println("Codigo ya Existe");
@@ -67,7 +68,7 @@ public class viewMatch {
         boolean mostrarEquipo = mostrar.showTeam();
         if(mostrarEquipo==false){ bandera = false; }
             if(bandera==true){
-                int codigoEquipo = val.leerNumero("Digite el codigo del Equipo: ",sc);
+                int codigoEquipo = Validation.leerNumero("Digite el codigo del Equipo: ",sc);
                 if(!controlador.equipos.containsKey(codigoEquipo)){ System.out.println("Error codigo no valido"); bandera=false;}
                     if(bandera==true){partido.setEquipoLocal(controlador.equipos.get(codigoEquipo));}
         }
