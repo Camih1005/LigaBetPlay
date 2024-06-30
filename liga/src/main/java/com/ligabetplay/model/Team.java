@@ -84,6 +84,12 @@ public class Team {
         this.lstPartidos.add(match);
     }
 
+    @Override
+    public String toString() {
+        return "Team [id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", estadio=" + estadio + ", Coach="
+                + Coach + ", lstJugadores=" + lstJugadores + ", lstPartidos=" + lstPartidos + "]";
+    }
+
 
     }
 

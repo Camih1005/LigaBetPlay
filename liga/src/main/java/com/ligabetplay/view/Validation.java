@@ -23,7 +23,7 @@ public class Validation{
         }
     }
 
-    public static Integer leerNumero(String msg, Scanner es) {
+    public  Integer leerNumero(String msg, Scanner es) {
         String dato;
         while (true) {
              dato = "";

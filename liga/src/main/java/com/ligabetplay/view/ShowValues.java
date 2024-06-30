@@ -2,6 +2,7 @@ package com.ligabetplay.view;
 
 
 import com.ligabetplay.Controller;
+import com.ligabetplay.model.Stadium;
 
 
 public class ShowValues {
@@ -10,6 +11,8 @@ public class ShowValues {
     public boolean showStadiums(){
         if(Controller.getInstance().estadios.isEmpty()){
             System.out.println("No hay estadios disponibles");
+            Stadium stadium = new Stadium();
+            System.out.println(stadium.getId() + stadium.getNombre() + stadium.getUbicacion());
             return false;
         }
         Controller.getInstance().estadios.forEach((key, value)-> 

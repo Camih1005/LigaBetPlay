@@ -3,6 +3,7 @@ package com.ligabetplay.view;
 import java.util.Scanner;
 import com.ligabetplay.Controller;
 import com.ligabetplay.view.SubViews.ViewPlayer;
+import com.ligabetplay.view.SubViews.ViewSchedulingMatch;
 import com.ligabetplay.view.SubViews.ViewStadium;
 import com.ligabetplay.view.SubViews.ViewTeam;
 
@@ -15,6 +16,7 @@ public class ViewAdmin {
         ViewStadium viewStadium = new ViewStadium();
         Controller controlador = Controller.getInstance();
         Scanner sc = controlador.sc;
+        Validation val = new Validation();
 
         while (true) {
             System.out.println("╔════════════════════════════════════════════════════╗");
@@ -40,7 +42,7 @@ public class ViewAdmin {
             System.out.println("║ 18. Salir del sistema                              ║");
             System.out.println("╚════════════════════════════════════════════════════╝");
 
-            int choice = Validation.leerNumero("Ingrese el número: ", sc);
+            int choice = val.leerNumero("Ingrese el número: ", sc);
 
             switch (choice) {
                 case 1:
@@ -50,7 +52,7 @@ public class ViewAdmin {
                     viewPlayer.start();
                     break;
                 case 3:
-                System.out.println("AUN EN ARREGLOS");
+                ViewSchedulingMatch.start();
                     break;
                 case 4:
                 System.out.println("AUN EN ARREGLOS");
@@ -66,6 +68,7 @@ public class ViewAdmin {
                     break;
                 case 8:
                 viewStadium.start();
+             
                 case 9:
                 System.out.println("AUN EN ARREGLOS");
                     break;
@@ -94,9 +97,10 @@ public class ViewAdmin {
                 System.out.println("AUN EN ARREGLOS");
                     break;
                 case 18:
-                   int choose =  Validation.leerNumero("Estas seguro de salir? \n1. si\n2. no\n", sc);
+                   int choose =  val.leerNumero("Estas seguro de salir? \n1. si\n2. no\n", sc);
                    System.out.println("Elije la opcion: \n");
                     if (choose == 1) {
+                        System.out.println("Que tenga un buen dia");
                         return;
                     }else{
                         continue;
