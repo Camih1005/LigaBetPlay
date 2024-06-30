@@ -2,14 +2,14 @@ package com.ligabetplay.model;
 
 public class Incident {
     private Integer id;
-    private Match partido;
+    private SchedulingMatch partido;
     private String descripcion;
     private int minuto;
 
     public Incident() {
     }
 
-    public Incident(Integer id, Match partido, String descripcion, int minuto) {
+    public Incident(Integer id, SchedulingMatch partido, String descripcion, int minuto) {
         this.id = id;
         this.partido = partido;
         this.descripcion = descripcion;
@@ -24,11 +24,11 @@ public class Incident {
         this.id = id;
     }
 
-    public Match getPartido() {
+    public SchedulingMatch getPartido() {
         return partido;
     }
 
-    public void setPartido(Match partido) {
+    public void setPartido(SchedulingMatch partido) {
         this.partido = partido;
     }
 

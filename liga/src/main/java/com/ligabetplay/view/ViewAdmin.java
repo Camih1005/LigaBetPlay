@@ -55,7 +55,7 @@ public class ViewAdmin {
                 ViewSchedulingMatch.start();
                     break;
                 case 4:
-                System.out.println("AUN EN ARREGLOS");
+                // ViewSchedulingMatch.registrarResultados();
                     break;
                 case 5:
                 System.out.println("AUN EN ARREGLOS");
@@ -97,7 +97,7 @@ public class ViewAdmin {
                 System.out.println("AUN EN ARREGLOS");
                     break;
                 case 18:
-                   int choose =  val.leerNumero("Estas seguro de salir? \n1. si\n2. no\n", sc);
+                   int choose =  val.leerNumero("¿Desea programar otro partido? (s/n): ", sc);
                    System.out.println("Elije la opcion: \n");
                     if (choose == 1) {
                         System.out.println("Que tenga un buen dia");

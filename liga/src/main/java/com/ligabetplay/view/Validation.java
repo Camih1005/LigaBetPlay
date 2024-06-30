@@ -2,47 +2,46 @@ package com.ligabetplay.view;
 
 import java.util.Scanner;
 
-public class Validation{
+public class Validation {
 
-      public String leerdato(String msg, Scanner es) {
+    public String leerdato(String msg, Scanner es) {
         String dato;
         while (true) {
             dato = "";
             try {
                 System.out.print(msg);
-                dato =es.nextLine();
+                dato = es.nextLine();
             } catch (Exception e) {
                 System.out.println(e);
             }
-            if (dato != "") {
+            if (!dato.isEmpty()) {
                 return dato;
             } else {
-                System.out.println("El campo no puede ser vacio\n");
+                System.out.println("El campo no puede ser vacío\n");
                 continue;
             }
         }
     }
 
-    public  Integer leerNumero(String msg, Scanner es) {
+    public int leerNumero(String msg, Scanner es) {
         String dato;
         while (true) {
-             dato = "";
+            dato = "";
             try {
                 System.out.print(msg);
                 dato = es.nextLine();
             } catch (Exception e) {
-                System.out.println(e);                
+                System.out.println(e);
             }
 
-
-            if(IsInteger(dato)==false){
+            if (!IsInteger(dato)) {
                 System.out.println("El campo no puede ser texto");
                 continue;
             }
-            if (dato !="") {
+            if (!dato.isEmpty()) {
                 return Integer.parseInt(dato);
             } else {
-                System.out.println("El campo no puede ser vacio o ser menor o igual a cero\n");
+                System.out.println("El campo no puede ser vacío o ser menor o igual a cero\n");
                 continue;
             }
         }
@@ -50,12 +49,10 @@ public class Validation{
 
     public static boolean IsInteger(String text) {
         try {
-            int v=0;
-            v=Integer.parseInt(text);
-          return true;
+            int v = Integer.parseInt(text);
+            return true;
         } catch (NumberFormatException ex) {
-           return false;
+            return false;
         }
     }
-
 }

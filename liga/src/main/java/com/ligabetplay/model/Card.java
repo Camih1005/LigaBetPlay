@@ -4,14 +4,14 @@ import com.ligabetplay.Interface.TipoTarjeta;
 public class Card {
     private Integer id;
     private Player jugador;
-    private Match partido;
+    private SchedulingMatch partido;
     private TipoTarjeta tipo;
     private Integer minuto;
 
     public Card() {
     }
 
-    public Card(Integer id, Player jugador, Match partido, TipoTarjeta tipo, Integer minuto) {
+    public Card(Integer id, Player jugador, SchedulingMatch partido, TipoTarjeta tipo, Integer minuto) {
         this.id = id;
         this.jugador = jugador;
         this.partido = partido;
@@ -35,11 +35,11 @@ public class Card {
         this.jugador = jugador;
     }
 
-    public Match getPartido() {
+    public SchedulingMatch getPartido() {
         return partido;
     }
 
-    public void setPartido(Match partido) {
+    public void setPartido(SchedulingMatch partido) {
         this.partido = partido;
     }
 
