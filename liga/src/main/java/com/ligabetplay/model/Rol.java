@@ -9,7 +9,6 @@ public enum Rol {
     ARBITRO(3),
     PERIODISTA(4),
     AFICIONADO(5);
-   
 
     private final int id;
     private final List<Permiso> permisos;

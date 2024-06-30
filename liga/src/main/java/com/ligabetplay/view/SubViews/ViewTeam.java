@@ -1,10 +1,12 @@
-package com.ligabetplay.view;
+package com.ligabetplay.view.SubViews;
 import java.util.Scanner;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.model.Team;
+import com.ligabetplay.view.ShowValues;
+import com.ligabetplay.view.Validation;
 
-public class viewTeam {
+public class ViewTeam {
 
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
@@ -166,4 +168,3 @@ public class viewTeam {
 
     }
     
-
