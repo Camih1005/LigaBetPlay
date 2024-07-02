@@ -11,7 +11,6 @@ public class ViewCoach {
     public static void start(){
         Controller controlador = Controller.getInstance();
         ViewPlayer viewPlayer = new ViewPlayer();
-       
         Scanner sc = controlador.sc;
 
         while (true) {
@@ -65,8 +64,15 @@ public class ViewCoach {
                 System.out.println("AUN EN ARREGLOS");
                     break;
                 case 11:
-                System.out.println("AUN EN ARREGLOS");
-                    break;
+                int choose =  Validation.leerNumero("Estas seguro de salir? \n1. si\n2. no\n", sc);
+                   System.out.println("Elije la opcion: \n");
+                    if (choose == 1) {
+                        System.out.println("Que tenga un buen dia");
+                        return;
+                    }else{
+                        continue;
+                    }
+                    
                 default:
                     break;
             }

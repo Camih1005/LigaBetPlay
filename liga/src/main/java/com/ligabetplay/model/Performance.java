@@ -3,7 +3,7 @@ package com.ligabetplay.model;
 public class Performance {
     private Integer id;
     private Player jugador;
-    private Match partido;
+    private SchedulingMatch partido;
     private int minutosJugados;
     private int numeroGoles;
     private int asistencias;
@@ -13,7 +13,7 @@ public class Performance {
     public Performance() {
     }
 
-    public Performance(Integer id, Player jugador, Match partido, int minutosJugados, int numeroGoles, int asistencias,
+    public Performance(Integer id, Player jugador, SchedulingMatch partido, int minutosJugados, int numeroGoles, int asistencias,
             int tarjetasAmarillas, int tarjetasRojas) {
         this.id = id;
         this.jugador = jugador;
@@ -41,11 +41,11 @@ public class Performance {
         this.jugador = jugador;
     }
 
-    public Match getPartido() {
+    public SchedulingMatch getPartido() {
         return partido;
     }
 
-    public void setPartido(Match partido) {
+    public void setPartido(SchedulingMatch partido) {
         this.partido = partido;
     }
 

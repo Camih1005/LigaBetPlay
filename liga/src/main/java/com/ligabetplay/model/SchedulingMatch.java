@@ -1,11 +1,10 @@
 package com.ligabetplay.model;
 
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Match {
+public class SchedulingMatch {
     private int id;
     private Team equipoLocal;
     private Team equipoVisitante;
@@ -14,18 +13,12 @@ public class Match {
     private Stadium estadio;
     private List<Goal> lstGoles;
     private List<Card> lstTarjetas;
-    private List <Incident> lstIncidentes;
+    private List<Incident> lstIncidentes;
     private String resultado;
-   
-    
-    
-    public Match() {
-        lstGoles = new ArrayList<Goal>();
-        lstTarjetas = new ArrayList<Card>();
-        lstIncidentes = new ArrayList<Incident>();
-    }
 
-    public Match(int id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio,
+    public SchedulingMatch() {}
+
+    public SchedulingMatch(int id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio,
             List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes, String resultado) {
         this.id = id;
         this.equipoLocal = equipoLocal;
@@ -38,6 +31,7 @@ public class Match {
         this.lstIncidentes = lstIncidentes;
         this.resultado = resultado;
     }
+
 
     public int getId() {
         return id;
@@ -67,8 +61,8 @@ public class Match {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFecha(Date fecha2) {
+        this.fecha = fecha2;
     }
 
     public Time getHora() {
@@ -91,24 +85,24 @@ public class Match {
         return lstGoles;
     }
 
-    public void setLstGoles(Goal goal) {
-        this.lstGoles.add(goal);
+    public void setLstGoles(List<Goal> lstGoles) {
+        this.lstGoles = lstGoles;
     }
 
     public List<Card> getLstTarjetas() {
         return lstTarjetas;
     }
 
-    public void setLstTarjetas(Card card) {
-        this.lstTarjetas.add(card);
+    public void setLstTarjetas(List<Card> lstTarjetas) {
+        this.lstTarjetas = lstTarjetas;
     }
 
     public List<Incident> getLstIncidentes() {
         return lstIncidentes;
     }
 
-    public void setLstIncidentes(Incident incident) {
-        this.lstIncidentes.add(incident);
+    public void setLstIncidentes(List<Incident> lstIncidentes) {
+        this.lstIncidentes = lstIncidentes;
     }
 
     public String getResultado() {

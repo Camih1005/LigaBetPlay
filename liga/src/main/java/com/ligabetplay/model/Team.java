@@ -10,15 +10,15 @@ public class Team {
     private String estadio;
     private String Coach;
     private List<Player> lstJugadores;
-    private List<Match> lstPartidos;
+    private List<SchedulingMatch> lstPartidos;
 
     public Team() {
         lstJugadores = new ArrayList<Player>();
-        lstPartidos = new ArrayList<Match>();
+        lstPartidos = new ArrayList<SchedulingMatch>();
     }
 
     public Team(int id, String nombre, String ciudad, String estadio, String coach, List<Player> lstJugadores,
-            List<Match> lstPartidos) {
+            List<SchedulingMatch> lstPartidos) {
         this.id = id;
         this.nombre = nombre;
         this.ciudad = ciudad;
@@ -76,12 +76,18 @@ public class Team {
         this.lstJugadores.add(player);
     }
 
-    public List<Match> getLstPartidos() {
+    public List<SchedulingMatch> getLstPartidos() {
         return lstPartidos;
     }
 
-    public void setLstPartidos(Match match) {
+    public void setLstPartidos(SchedulingMatch match) {
         this.lstPartidos.add(match);
+    }
+
+    @Override
+    public String toString() {
+        return "Team [id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", estadio=" + estadio + ", Coach="
+                + Coach + ", lstJugadores=" + lstJugadores + ", lstPartidos=" + lstPartidos + "]";
     }
 
 

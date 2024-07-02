@@ -2,14 +2,14 @@ package com.ligabetplay.model;
 
 public class Result {
     private Integer id;
-    private Match partido;
+    private SchedulingMatch partido;
     private int golesEquipoLocal;
     private int golesEquipoVisitante;
 
     public Result() {
     }
 
-    public Result(Integer id, Match partido, int golesEquipoLocal, int golesEquipoVisitante) {
+    public Result(Integer id, SchedulingMatch partido, int golesEquipoLocal, int golesEquipoVisitante) {
         this.id = id;
         this.partido = partido;
         this.golesEquipoLocal = golesEquipoLocal;
@@ -24,11 +24,11 @@ public class Result {
         this.id = id;
     }
 
-    public Match getPartido() {
+    public SchedulingMatch getPartido() {
         return partido;
     }
 
-    public void setPartido(Match partido) {
+    public void setPartido(SchedulingMatch partido) {
         this.partido = partido;
     }
 

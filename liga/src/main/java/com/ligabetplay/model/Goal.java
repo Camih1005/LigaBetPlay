@@ -5,14 +5,14 @@ public class Goal {
     private Player jugador;
     private Team equipo;
     private int minuto;
-    private Match partido;
+    private SchedulingMatch partido;
 
 
     public Goal() {
     }
 
 
-    public Goal(Integer id, Player jugador, Team equipo, int minuto, Match partido) {
+    public Goal(Integer id, Player jugador, Team equipo, int minuto, SchedulingMatch partido) {
         this.id = id;
         this.jugador = jugador;
         this.equipo = equipo;
@@ -61,12 +61,12 @@ public class Goal {
     }
 
 
-    public Match getPartido() {
+    public SchedulingMatch getPartido() {
         return partido;
     }
 
 
-    public void setPartido(Match partido) {
+    public void setPartido(SchedulingMatch partido) {
         this.partido = partido;
     }
 

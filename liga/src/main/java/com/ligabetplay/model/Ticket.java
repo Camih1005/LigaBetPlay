@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Ticket {
     private Integer id;
-    private Match partido;
+    private SchedulingMatch partido;
     private User comprador;
     private Date fechaCompra;
     private int cantidad;
@@ -15,7 +15,7 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(Integer id, Match partido, User comprador, Date fechaCompra, int cantidad, double precioUnitario,
+    public Ticket(Integer id, SchedulingMatch partido, User comprador, Date fechaCompra, int cantidad, double precioUnitario,
             double precioTotal, String ubicacion) {
         this.id = id;
         this.partido = partido;
@@ -35,11 +35,11 @@ public class Ticket {
         this.id = id;
     }
 
-    public Match getPartido() {
+    public SchedulingMatch getPartido() {
         return partido;
     }
 
-    public void setPartido(Match partido) {
+    public void setPartido(SchedulingMatch partido) {
         this.partido = partido;
     }
 
