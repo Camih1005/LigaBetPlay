@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.ligabetplay.Controller;
+import com.ligabetplay.Main;
 import com.ligabetplay.model.*;
 import com.ligabetplay.view.Validation;
 
@@ -14,13 +15,19 @@ public class ViewSchedulingMatch {
     public static void start() {
         Controller controlador = Controller.getInstance();
         Scanner sc = controlador.sc;
-        SchedulingMatch sm = new SchedulingMatch();
 
         while (true) {
-           
-            sm.setId(Integer.valueOf(UUID.randomUUID().toString()));  
+            Main.limpiarPantalla();
+            SchedulingMatch sm = new SchedulingMatch();
+
+            // Generar un ID para el partido
+            int newId = controlador.programacionPartidos.size() + 1;
+            sm.setId(newId);
+
             // Mostrar equipos disponibles
-            System.out.println("\nEquipos disponibles:");
+            System.out.println("╔════════════════════════════════════════════════════╗");
+            System.out.println("║                       EQUIPOS                      ║");
+            System.out.println("╠════════════════════════════════════════════════════╣");
             for (Map.Entry<Integer, Team> entry : controlador.equipos.entrySet()) {
                 System.out.println("ID: " + entry.getKey() + ", Nombre: " + entry.getValue().getNombre());
             }
@@ -42,7 +49,9 @@ public class ViewSchedulingMatch {
             sm.setEquipoVisitante(controlador.equipos.get(visitanteId));
 
             // Mostrar estadios disponibles
-            System.out.println("\nEstadios disponibles:");
+            System.out.println("╔════════════════════════════════════════════════════╗");
+            System.out.println("║                       ESTADIOS                     ║");
+            System.out.println("╠════════════════════════════════════════════════════╣");
             for (Map.Entry<Integer, Stadium> entry : controlador.estadios.entrySet()) {
                 System.out.println("ID: " + entry.getKey() + ", Nombre: " + entry.getValue().getNombre());
             }
@@ -83,7 +92,7 @@ public class ViewSchedulingMatch {
             }
 
             // Guardar el partido programado
-            // controlador.programacionPartidos.put(controlador.programacionPartidos.size() + 1, sm);
+            controlador.programacionPartidos.put(newId, sm);
             System.out.println("Partido guardado exitosamente.\n");
 
             // Preguntar si desea programar otro partido
@@ -93,79 +102,97 @@ public class ViewSchedulingMatch {
             }
         }
     }
+
+    public static void registrarResultados() {
+        Controller controlador = Controller.getInstance();
+        Validation val = new Validation();
+        Scanner sc = controlador.sc;
+
+        while (true) {
+            // Mostrar partidos programados
+            System.out.println("\nPartidos programados:");
+            for (Map.Entry<Integer, SchedulingMatch> entry : controlador.programacionPartidos.entrySet()) {
+                SchedulingMatch partido = entry.getValue();
+                System.out.println("ID: " + entry.getKey() + ", " + partido.getEquipoLocal().getNombre() + " vs "
+                        + partido.getEquipoVisitante().getNombre());
+            }
+
+            // Ingresar ID del partido para registrar resultados
+            int partidoId = val.leerNumero("\nIngrese el ID del partido para registrar resultados: ", sc);
+            if (!controlador.programacionPartidos.containsKey(partidoId)) {
+                System.out.println("ID del partido no válido. Intente de nuevo.");
+                continue;
+            }
+
+            SchedulingMatch partido = controlador.programacionPartidos.get(partidoId);
+
+            // Ingresar resultados
+            List<Goal> lstGoles = new ArrayList<>();
+            while (true) {
+                int golId = val.leerNumero("Ingrese el id del gol (0 para terminar): ", sc);
+                if (golId == 0)
+                    break;
+
+                Goal goal = new Goal();
+                goal.setId(golId);
+
+                int jugadorId = val.leerNumero("Ingrese el id del jugador que anotó: ", sc);
+                Player jugador = controlador.jugadores.get(jugadorId);
+                goal.setJugador(jugador);
+
+                int equipoId = val.leerNumero("Ingrese el id del equipo que anotó: ", sc);
+                Team equipo = controlador.equipos.get(equipoId);
+                goal.setEquipo(equipo);
+
+                int minuto = val.leerNumero("Ingrese el minuto del gol: ", sc);
+                goal.setMinuto(minuto);
+
+                goal.setPartido(partido);
+                lstGoles.add(goal);
+            }
+            partido.setLstGoles(lstGoles);
+
+            List<Incident> lstIncidentes = new ArrayList<>();
+            String deseaIngresarIncidentes = val.leerdato("¿Desea ingresar incidentes del partido? (s/n): ", sc);
+            if (deseaIngresarIncidentes.equalsIgnoreCase("s")) {
+                while (true) {
+                    String incidentes = val
+                            .leerdato("Ingrese la descripción del incidente (deje vacío para terminar): ", sc);
+                    if (incidentes.isEmpty())
+                        break;
+
+                    Incident incident = new Incident();
+                    incident.setDescripcion(incidentes);
+                    lstIncidentes.add(incident);
+                }
+            }
+            partido.setLstIncidentes(lstIncidentes);
+
+            controlador.programacionPartidos.put(partidoId, partido);
+
+            System.out.println("\nResultado registrado:");
+            System.out
+                    .println(partido.getEquipoLocal().getNombre() + " vs " + partido.getEquipoVisitante().getNombre());
+            System.out.println("Goles:");
+            for (Goal goal : lstGoles) {
+                System.out.println("Gol ID: " + goal.getId() + ", Jugador: " + goal.getJugador().getNombre()
+                        + ", Equipo: " + goal.getEquipo().getNombre() + ", Minuto: " + goal.getMinuto());
+            }
+
+            // Mostrar incidentes si existen
+            if (!lstIncidentes.isEmpty()) {
+                System.out.println("Incidentes:");
+                for (Incident incident : lstIncidentes) {
+                    System.out.println("Descripción: " + incident.getDescripcion());
+                }
+            }
+
+            // Preguntar si desea registrar resultados de otro partido
+            String continuar = val.leerdato("¿Desea registrar resultados de otro partido? (s/n): ", sc);
+            if (!continuar.equalsIgnoreCase("s")) {
+                break;
+            }
+        }
     }
 
-    // public static void registrarResultados() {
-    //     Controller controlador = Controller.getInstance();
-    //     Validation val = new Validation();
-    //     Scanner sc = controlador.sc;
-        
-
-    //     while (true) {
-    //         // Mostrar partidos programados
-    //         System.out.println("\nPartidos programados:");
-    //         for (Map.Entry<Integer, SchedulingMatch> entry : controlador.programacionPartidos.entrySet()) {
-    //             SchedulingMatch partido = entry.getValue();
-    //             System.out.println("ID: " + entry.getKey() + ", " + partido.getEquipoLocal().getNombre() + " vs " + partido.getEquipoVisitante().getNombre());
-    //         }
-
-    //         // Ingresar ID del partido para registrar resultados
-    //         int partidoId = val.leerNumero("\nIngrese el ID del partido para registrar resultados: ", sc);
-    //         if (!controlador.programacionPartidos.containsKey(partidoId)) {
-    //             System.out.println("ID del partido no válido. Intente de nuevo.");
-    //             continue;
-    //         }
-
-    //         SchedulingMatch partido = controlador.programacionPartidos.get(partidoId);
-
-    //         // Ingresar resultados
-    //         List<Goal> lstGoles = new ArrayList<>();
-    //         while (true) {
-    //             int golId = val.leerNumero("Ingrese el id del gol (0 para terminar): ", sc);
-    //             if (golId == 0) break;
-
-    //             Goal goal = new Goal();
-    //             goal.setId(golId);
-
-    //             int jugadorId = val.leerNumero("Ingrese el id del jugador que anotó: ", sc);
-    //             Player jugador = controlador.jugadores.get(jugadorId);
-    //             goal.setJugador(jugador);
-
-    //             int equipoId = val.leerNumero("Ingrese el id del equipo que anotó: ", sc);
-    //             Team equipo = controlador.equipos.get(equipoId);
-    //             goal.setEquipo(equipo);
-
-    //             int minuto = val.leerNumero("Ingrese el minuto del gol: ", sc);
-    //             goal.setMinuto(minuto);
-
-    //             goal.setPartido(partido);
-    //             lstGoles.add(goal);
-    //         }
-    //         partido.setLstGoles(lstGoles);
-
-    //         String incidentes = val.leerdato("Ingrese id del incidentes del partido: ", sc);
-            
-            
-    //         partido.getId(val.leerNumero("Ingrese el minuto del gol: ", sc));
-    //         Incident incident = controlador.incident.put(incidentes,);
-
-    //         // Guardar resultado en historial
-    //         controlador.programacionPartidos.put(partidoId, partido);
-
-    //         // Mostrar resumen del resultado registrado
-    //         System.out.println("\nResultado registrado:");
-    //         System.out.println(partido.getEquipoLocal().getNombre() + " vs " + partido.getEquipoVisitante().getNombre());
-    //         System.out.println("Goles:");
-    //         for (Goal goal : lstGoles) {
-    //             System.out.println("Gol ID: " + goal.getId() + ", Jugador: " + goal.getJugador().getNombre() + ", Equipo: " + goal.getEquipo().getNombre() + ", Minuto: " + goal.getMinuto());
-    //         }
-    //         System.out.println("Incidentes: " + partido.getIncidentes());
-
-    //         // Preguntar si desea registrar resultados de otro partido
-    //         String continuar = val.leerdato("¿Desea registrar resultados de otro partido? (s/n): ", sc);
-    //         if (!continuar.equalsIgnoreCase("s")) {
-    //             break;
-    //         }
-    //     }
-    // }
-
+}

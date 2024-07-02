@@ -2,6 +2,7 @@ package com.ligabetplay.view.SubViews;
 import java.util.Scanner;
 
 import com.ligabetplay.Controller;
+import com.ligabetplay.Main;
 import com.ligabetplay.model.Team;
 import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
@@ -13,6 +14,7 @@ public class ViewTeam {
     ShowValues mostrar = new ShowValues();
 
     public void start(){
+        Main.limpiarPantalla();
         
         int choice = 0;
 

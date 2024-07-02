@@ -25,8 +25,12 @@ public class ShowValues {
             System.out.println("No hay equipos disponibles");
             return false;
         }
+        
+            System.out.println("╔════════════════════════════════════════════════════╗");
+            System.out.println("║                       EQUIPOS                      ║");
+            System.out.println("╠════════════════════════════════════════════════════╣");
         Controller.getInstance().equipos.forEach((key, value)-> 
-        System.out.println("codigo: " + key + ", Nombre: " + value.getNombre()));
+            System.out.println("codigo: " + key + ", Nombre: " + value.getNombre()));
         return true;
     }
 

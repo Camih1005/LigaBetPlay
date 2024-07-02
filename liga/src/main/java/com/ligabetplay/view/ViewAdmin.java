@@ -2,6 +2,7 @@ package com.ligabetplay.view;
 
 import java.util.Scanner;
 import com.ligabetplay.Controller;
+import com.ligabetplay.Main;
 import com.ligabetplay.view.SubViews.ViewPlayer;
 import com.ligabetplay.view.SubViews.ViewSchedulingMatch;
 import com.ligabetplay.view.SubViews.ViewStadium;
@@ -10,7 +11,7 @@ import com.ligabetplay.view.SubViews.ViewTeam;
 public class ViewAdmin {
 
     public static void start() {
-       
+        Main.limpiarPantalla();
         ViewTeam viewTeam = new ViewTeam();
         ViewPlayer viewPlayer = new ViewPlayer();
         ViewStadium viewStadium = new ViewStadium();
@@ -55,7 +56,7 @@ public class ViewAdmin {
                     ViewSchedulingMatch.start();
                     break;
                 case 4:
-                // ViewSchedulingMatch.registrarResultados();
+                ViewSchedulingMatch.registrarResultados();
                     break;
                 case 5:
                 System.out.println("AUN EN ARREGLOS");
@@ -110,6 +111,8 @@ public class ViewAdmin {
                     System.out.println("Opción inválida. Intente de nuevo.");
                     break;
             }
+            System.out.print("Presione Enter para continuar...");
+            sc.nextLine();
             
         }
     }

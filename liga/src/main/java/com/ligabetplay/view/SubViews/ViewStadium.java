@@ -3,6 +3,7 @@ package com.ligabetplay.view.SubViews;
 import java.util.Scanner;
 
 import com.ligabetplay.Controller;
+import com.ligabetplay.Main;
 import com.ligabetplay.model.Stadium;
 import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
@@ -15,7 +16,7 @@ public class ViewStadium {
 
 
     public void start(){
-
+        Main.limpiarPantalla();
         int choice = 0;
         System.out.println("\n" + //
                         "█▀▀ █▀▀ █▀ ▀█▀ █ █▀█ █▄░█   █▀▄ █▀▀   █▀▀ █▀ ▀█▀ ▄▀█ █▀▄ █ █▀█ █▀\n" + //
@@ -41,12 +42,13 @@ public class ViewStadium {
                 case 3:
                     deleteStadium();
                     break;
-            
+                case 4:
+                    return;
                 default:
                     System.out.println("Campo no Valido");
                     break;
             }
-        
+           
         }
 
     }
