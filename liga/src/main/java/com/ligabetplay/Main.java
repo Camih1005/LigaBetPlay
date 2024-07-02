@@ -5,6 +5,8 @@ import java.util.Scanner;
 import com.ligabetplay.model.*;
 import com.ligabetplay.view.ViewAdmin;
 import com.ligabetplay.view.SubViews.ViewCoach;
+import com.ligabetplay.view.SubViews.ViewPlayer;
+import com.ligabetplay.view.SubViews.ViewTeam;
 
 
 
@@ -13,6 +15,12 @@ public class Main {
 
     public static void main(String[] args) {
         Controller controlador = Controller.getInstance();
+
+        ViewTeam equipo = new ViewTeam();
+        equipo.start();
+        ViewPlayer jugador = new ViewPlayer();
+        jugador.start();
+
 
         while (true) {
             System.out.println("1. Ingresar como ADMINISTRADOR");

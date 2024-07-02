@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.model.Match;
-import com.ligabetplay.model.Stadium;
 import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
 
@@ -64,23 +63,30 @@ public class viewMatch {
             System.out.println("Deben haber mas de dos equipos");
             return;
         }
+
         boolean bandera = true;
         boolean mostrarEquipo = mostrar.showTeam();
-        if(mostrarEquipo==false){ bandera = false; }
-            if(bandera==true){
-                int codigoEquipo = Validation.leerNumero("Digite el codigo del Equipo: ",sc);
-                if(!controlador.equipos.containsKey(codigoEquipo)){ System.out.println("Error codigo no valido"); bandera=false;}
-                    if(bandera==true){partido.setEquipoLocal(controlador.equipos.get(codigoEquipo));}
+        if(mostrarEquipo==false){return; }
+        if(bandera==true){
+            int codigoEquipoLocal = Validation.leerNumero("Digite el codigo del Equipo Local: ",sc);
+            if(!controlador.equipos.containsKey(codigoEquipoLocal)){ System.out.println("Error codigo no valido"); bandera=false;}
+            if(bandera==true){partido.setEquipoLocal(controlador.equipos.get(codigoEquipoLocal));}
+            int codigoEquipoVisitante = Validation.leerNumero("Digite el codigo del Equipo Visitante: ",sc);
+            if(codigoEquipoLocal==codigoEquipoVisitante){System.out.println("Error al asignar el codigo");}
+
+            if(controlador.equipos.contains(codigoEquipoVisitante)){partido.setEquipoVisitante(controlador.equipos.get(codigoEquipoVisitante));}
+            else{
+                System.out.println("No se pudo crear partido");
+                partido = null;
+                return;
+            }
         }
 
-
-
-        // estadio.setUbicacion(val.leerdato("Digite la ubicacion del estadio: ", sc));
-        // estadio.setCapacidad(val.leerNumero("Digite la capacidad del estadio: ", sc));
-        // controlador.estadios.put(codigoEstadio, estadio);
+        partido.setFecha(Validation.leerdato("Digite la fecha del partido ",sc));
+        partido.setHora(Validation.leerdato("Digite la hora del partido ",sc));
 
         System.out.println("---------------------------------");
-        System.out.println("Creacion del estadio exitosa");
+        System.out.println("Creacion del partido exitosa");
         System.out.println("---------------------------------");
 
 
@@ -92,6 +98,21 @@ public class viewMatch {
     }
 
     public void deleteMatch(){
+        boolean mostrarPartidos = mostrar.showMatch();
+        if(mostrarPartidos==false){
+            return;
+        }
+
+        int codigoPartido = Validation.leerNumero("\nDigite el Partido a eliminar: ",sc);
+        if(!controlador.partidos.containsKey(codigoPartido)){
+            System.out.println("Error codigo no valido");
+            return ;
+        }
+        
+        controlador.partidos.remove(codigoPartido);
+        System.out.println("Partido Eliminado Exitosamente");
+
+        return;
 
     }
 

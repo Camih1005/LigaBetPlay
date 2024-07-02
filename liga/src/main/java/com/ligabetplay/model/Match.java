@@ -9,8 +9,8 @@ public class Match {
     private int id;
     private Team equipoLocal;
     private Team equipoVisitante;
-    private Date fecha;
-    private Time hora;
+    private String fecha;
+    private String hora;
     private Stadium estadio;
     private List<Goal> lstGoles;
     private List<Card> lstTarjetas;
@@ -25,7 +25,7 @@ public class Match {
         lstIncidentes = new ArrayList<Incident>();
     }
 
-    public Match(int id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio,
+    public Match(int id, Team equipoLocal, Team equipoVisitante, String fecha, String hora, Stadium estadio,
             List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes, String resultado) {
         this.id = id;
         this.equipoLocal = equipoLocal;
@@ -63,19 +63,19 @@ public class Match {
         this.equipoVisitante = equipoVisitante;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
