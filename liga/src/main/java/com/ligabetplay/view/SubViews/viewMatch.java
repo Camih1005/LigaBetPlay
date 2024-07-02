@@ -74,7 +74,7 @@ public class viewMatch {
             int codigoEquipoVisitante = Validation.leerNumero("Digite el codigo del Equipo Visitante: ",sc);
             if(codigoEquipoLocal==codigoEquipoVisitante){System.out.println("Error al asignar el codigo");}
 
-            if(controlador.equipos.contains(codigoEquipoVisitante)){partido.setEquipoVisitante(controlador.equipos.get(codigoEquipoVisitante));}
+            if(controlador.equipos.containsKey(codigoEquipoVisitante)){partido.setEquipoVisitante(controlador.equipos.get(codigoEquipoVisitante));}
             else{
                 System.out.println("No se pudo crear partido");
                 partido = null;
@@ -84,7 +84,7 @@ public class viewMatch {
 
         partido.setFecha(Validation.leerdato("Digite la fecha del partido ",sc));
         partido.setHora(Validation.leerdato("Digite la hora del partido ",sc));
-
+        controlador.partidos.put(codigoPartido, partido);
         System.out.println("---------------------------------");
         System.out.println("Creacion del partido exitosa");
         System.out.println("---------------------------------");
@@ -94,6 +94,73 @@ public class viewMatch {
     }
 
     public void editMatch(){
+          boolean mostrarPartidos = mostrar.showMatch();
+        if(mostrarPartidos==false){
+            return;
+        }
+
+        int codigoPartido = Validation.leerNumero("Digite el partido a actualizar: ",sc);
+        if(!controlador.partidos.containsKey(codigoPartido)){
+            System.out.println("Error codigo no valido");
+            return ;
+        }
+
+        Match partido = controlador.partidos.get(codigoPartido);
+
+        System.out.println("Campos de Partido");
+        System.out.println("1. equipo local");
+        System.out.println("2. equipo visitante");
+        System.out.println("3. fecha");
+        System.out.println("4- Hora");
+
+        int opcion = Validation.leerNumero("Digite la opcion que desea editar: ",sc);
+
+
+        switch (opcion) {
+            case 1:
+                System.out.println("Campo Actual: " + partido.getEquipoLocal().getNombre());
+                boolean bandera = true;
+                boolean mostrarEquipo = mostrar.showTeam();
+                if(mostrarEquipo==false){return; }
+                if(bandera==true){
+                    int codigoEquipoLocal = Validation.leerNumero("Digite el codigo del Equipo Local: ",sc);
+                    if(!controlador.equipos.containsKey(codigoEquipoLocal)){ System.out.println("Error codigo no valido"); bandera=false;}
+                    if(bandera==true){partido.setEquipoLocal(controlador.equipos.get(codigoEquipoLocal));}}
+                
+                break;
+            case 2:
+                System.out.println("Campo Actual: " + partido.getEquipoVisitante().getNombre());
+                boolean mostrarEquipo2 = mostrar.showTeam();
+                if(mostrarEquipo2==false){return; }
+                int codigoEquipoVisitante = Validation.leerNumero("Digite el codigo del Equipo Visitante: ",sc);
+                if(partido.getEquipoLocal().getId()==codigoEquipoVisitante){System.out.println("Error al asignar el codigo");}
+
+                if(controlador.equipos.containsKey(codigoEquipoVisitante)){partido.setEquipoVisitante(controlador.equipos.get(codigoEquipoVisitante));}
+                else{
+                    System.out.println("No se pudo crear partido");
+                    partido = null;
+                    return;
+                }
+                break;
+            case 3:
+                System.out.println("Campo Actual: " + partido.getFecha());
+                partido.setFecha(Validation.leerdato("Digite la fecha del partido: ",sc ));
+                break;
+            case 4:
+                System.out.println("Campo Actual: " + partido.getHora());
+                partido.setHora(Validation.leerdato("Digite la hora del partido: ",sc ));
+                break;
+            default:
+                System.out.println("Codigo no valido");
+                break;
+        }
+    
+        System.out.println("---------------------------------");
+        System.out.println("Campo actualizado  exitosamente");
+        System.out.println("---------------------------------");
+        return;
+        
+
 
     }
 
@@ -115,7 +182,4 @@ public class viewMatch {
         return;
 
     }
-
-
-
 }
