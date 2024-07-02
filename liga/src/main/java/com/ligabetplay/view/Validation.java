@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Validation {
 
-    public String leerdato(String msg, Scanner es) {
+      public static String leerdato(String msg, Scanner es) {
         String dato;
         while (true) {
             dato = "";
@@ -23,7 +23,7 @@ public class Validation {
         }
     }
 
-    public int leerNumero(String msg, Scanner es) {
+    public static int leerNumero(String msg, Scanner es) {
         String dato;
         while (true) {
             dato = "";

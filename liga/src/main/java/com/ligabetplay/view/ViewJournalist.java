@@ -9,7 +9,6 @@ public class ViewJournalist {
     public static void start() {
         Controller controlador = Controller.getInstance();
         Scanner sc = controlador.sc;
-        Validation val = new Validation();
         while (true) {
             System.out.println("╔════════════════════════════════════════════════════╗");
             System.out.println("║                   MENU PERIODISTA                  ║");
@@ -22,7 +21,7 @@ public class ViewJournalist {
             System.out.println("║  6. Salir del sistema                              ║");
             System.out.println("╚════════════════════════════════════════════════════╝");
 
-            int choice = val.leerNumero("Ingrese el número: ", sc);
+            int choice = Validation.leerNumero("Ingrese el número: ", sc);
 
             switch (choice) {
                 case 1:
@@ -41,7 +40,7 @@ public class ViewJournalist {
                 System.out.println("AUN EN ARREGLOS");
                     break;
                 case 6:
-                int choose =  val.leerNumero("Estas seguro de salir? \n1. si\n2. no\n", sc);
+                int choose =  Validation.leerNumero("Estas seguro de salir? \n1. si\n2. no\n", sc);
                 System.out.println("Elije la opcion: \n");
                  if (choose == 1) {
                      System.out.println("Que tenga un buen dia");

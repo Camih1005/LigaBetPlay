@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class SchedulingMatch {
-    private String id;
+    private int id;
     private Team equipoLocal;
     private Team equipoVisitante;
     private Date fecha;
@@ -18,8 +18,8 @@ public class SchedulingMatch {
 
     public SchedulingMatch() {}
 
-    public SchedulingMatch(String id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio, 
-                           List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes, String resultado) {
+    public SchedulingMatch(int id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio,
+            List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes, String resultado) {
         this.id = id;
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
@@ -33,11 +33,11 @@ public class SchedulingMatch {
     }
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -61,8 +61,8 @@ public class SchedulingMatch {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFecha(Date fecha2) {
+        this.fecha = fecha2;
     }
 
     public Time getHora() {

@@ -15,21 +15,21 @@ public class ViewAdmin {
         ViewPlayer viewPlayer = new ViewPlayer();
         ViewStadium viewStadium = new ViewStadium();
         Controller controlador = Controller.getInstance();
+        ViewSchedulingMatch viewSchedulingMatch = new ViewSchedulingMatch();
         Scanner sc = controlador.sc;
-        Validation val = new Validation();
-
+        System.out.println("Solo las opciones con asterisco se escuentran disponibles, En manteminiento");
         while (true) {
             System.out.println("╔════════════════════════════════════════════════════╗");
             System.out.println("║                   MENU ADMINISTRADOR               ║");
             System.out.println("╠════════════════════════════════════════════════════╣");
-            System.out.println("║  1. Gestionar equipos                              ║");
-            System.out.println("║  2. Gestionar jugadores                            ║");
-            System.out.println("║  3. Programación de partidos                       ║");
+            System.out.println("║  1. Gestionar equipos *                           ║");
+            System.out.println("║  2. Gestionar jugadores *                            ║");
+            System.out.println("║  3. Programación de partidos *                       ║");
             System.out.println("║  4. Registrar resultados de partidos               ║");
             System.out.println("║  5. Gestionar noticias y comunicados               ║");
             System.out.println("║  6. Gestionar entrenadores                         ║");
             System.out.println("║  7. Gestionar árbitros                             ║");
-            System.out.println("║  8. Gestionar estadios                             ║");
+            System.out.println("║  8. Gestionar estadios *                            ║");
             System.out.println("║  9. Gestionar patrocinios                          ║");
             System.out.println("║ 10. Generar informes                               ║");
             System.out.println("║ 11. Generar incidentes o sanciones                 ║");
@@ -39,10 +39,10 @@ public class ViewAdmin {
             System.out.println("║ 15. Gestionar premios y reconocimientos            ║");
             System.out.println("║ 16. Gestionar usuarios y roles                     ║");
             System.out.println("║ 17. Gestionar relaciones públicas                  ║");
-            System.out.println("║ 18. Salir del sistema                              ║");
+            System.out.println("║ 18. Salir del sistema *                              ║");
             System.out.println("╚════════════════════════════════════════════════════╝");
 
-            int choice = val.leerNumero("Ingrese el número: ", sc);
+            int choice = Validation.leerNumero("Ingrese el número: ", sc);
 
             switch (choice) {
                 case 1:
@@ -52,7 +52,7 @@ public class ViewAdmin {
                     viewPlayer.start();
                     break;
                 case 3:
-                ViewSchedulingMatch.start();
+                    ViewSchedulingMatch.start();
                     break;
                 case 4:
                 // ViewSchedulingMatch.registrarResultados();
@@ -97,7 +97,7 @@ public class ViewAdmin {
                 System.out.println("AUN EN ARREGLOS");
                     break;
                 case 18:
-                   int choose =  val.leerNumero("¿Desea programar otro partido? (s/n): ", sc);
+                   int choose =  Validation.leerNumero("¿Desea programar otro partido? (s/n): ", sc);
                    System.out.println("Elije la opcion: \n");
                     if (choose == 1) {
                         System.out.println("Que tenga un buen dia");

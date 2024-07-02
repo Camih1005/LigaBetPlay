@@ -20,17 +20,6 @@ public class ShowValues {
         return true;
     };
 
-
-    public boolean showTrainers(){
-        if(Controller.getInstance().entrenadores.isEmpty()){
-            System.out.println("No hay entrenadores disponibles");
-            return false;
-        }
-        Controller.getInstance().entrenadores.forEach((key, value)-> 
-        System.out.println("codigo: " + key + ", Nombre: " + value.getNombre()));
-        return true;
-    };
-
     public boolean showTeam(){
         if(Controller.getInstance().equipos.isEmpty()){
             System.out.println("No hay equipos disponibles");
@@ -50,6 +39,28 @@ public class ShowValues {
         System.out.println("codigo: " + key + ", Nombre: " + value.getNombre()));
         return true;
     }
+
+    public boolean showPlayer(){
+        if(Controller.getInstance().jugadores.isEmpty()){
+            System.out.println("No hay jugadores disponibles");
+            return false;
+        }
+        Controller.getInstance().jugadores.forEach((key, value)-> 
+        System.out.println("codigo: " + key + ", Nombre: " + value.getNombre()));
+        return true;
+    }
+
+
+    // public boolean showMatch(){
+    //     if(Controller.getInstance().partidos.isEmpty()){
+    //         System.out.println("No hay partidos disponibles");
+    //         return false;
+    //     }
+    //     Controller.getInstance().partidos.forEach((key, value)-> 
+    //     System.out.println("codigo: " + key + ", Fecha partido: " + value.getFecha()));
+    //     return true;
+    // }
+
 
     
         

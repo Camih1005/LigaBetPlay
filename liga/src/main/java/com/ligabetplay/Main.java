@@ -4,7 +4,7 @@ import java.util.Scanner;
 import com.ligabetplay.model.*;
 import com.ligabetplay.view.Validation;
 import com.ligabetplay.view.ViewAdmin;
-import com.ligabetplay.view.ViewCoach;
+
 import com.ligabetplay.view.ViewFan;
 import com.ligabetplay.view.ViewJournalist;
 import com.ligabetplay.view.ViewReferee;
@@ -15,7 +15,6 @@ public class Main {
     public static void main(String[] args) {
         Controller controlador = Controller.getInstance();
         Scanner sc = controlador.sc;
-        Validation val = new Validation();
 
         while (true) {
 
@@ -27,7 +26,7 @@ public class Main {
 
             try (sc) {
 
-                int choice = val.leerNumero("Ingrese el número: ", sc);
+                int choice = Validation.leerNumero("Ingrese el número: ", sc);
 
                 Rol[] roles = Rol.values();
                 for (Rol rol : roles) {
@@ -64,7 +63,6 @@ public class Main {
                 ViewAdmin.start();
                 break;
             case EQUIPO_TECNICO:
-                ViewCoach.start();
                 System.out.println("AUN EN ARREGLOS");
                 break;
             case ARBITRO:
@@ -82,4 +80,6 @@ public class Main {
         }
     }
 
+
 }
+

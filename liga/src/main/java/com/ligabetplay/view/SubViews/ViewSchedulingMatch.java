@@ -13,13 +13,12 @@ public class ViewSchedulingMatch {
 
     public static void start() {
         Controller controlador = Controller.getInstance();
-        Validation val = new Validation();
         Scanner sc = controlador.sc;
+        SchedulingMatch sm = new SchedulingMatch();
 
         while (true) {
-            SchedulingMatch sm = new SchedulingMatch();
-            sm.setId(UUID.randomUUID().toString());  
-
+           
+            sm.setId(Integer.valueOf(UUID.randomUUID().toString()));  
             // Mostrar equipos disponibles
             System.out.println("\nEquipos disponibles:");
             for (Map.Entry<Integer, Team> entry : controlador.equipos.entrySet()) {
@@ -27,7 +26,7 @@ public class ViewSchedulingMatch {
             }
 
             // Ingresar equipo local
-            int localId = val.leerNumero("\nIngrese el ID del equipo local: ", sc);
+            int localId = Validation.leerNumero("\nIngrese el ID del equipo local: ", sc);
             if (!controlador.equipos.containsKey(localId)) {
                 System.out.println("ID del equipo local no válido. Intente de nuevo.");
                 continue;
@@ -35,7 +34,7 @@ public class ViewSchedulingMatch {
             sm.setEquipoLocal(controlador.equipos.get(localId));
 
             // Ingresar equipo visitante
-            int visitanteId = val.leerNumero("Ingrese el ID del equipo visitante: ", sc);
+            int visitanteId = Validation.leerNumero("Ingrese el ID del equipo visitante: ", sc);
             if (!controlador.equipos.containsKey(visitanteId)) {
                 System.out.println("ID del equipo visitante no válido. Intente de nuevo.");
                 continue;
@@ -49,7 +48,7 @@ public class ViewSchedulingMatch {
             }
 
             // Ingresar estadio
-            int estadioId = val.leerNumero("Ingrese el ID del estadio: ", sc);
+            int estadioId = Validation.leerNumero("Ingrese el ID del estadio: ", sc);
             if (!controlador.estadios.containsKey(estadioId)) {
                 System.out.println("ID del estadio no válido. Intente de nuevo.");
                 continue;
@@ -60,7 +59,7 @@ public class ViewSchedulingMatch {
             SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = null;
             while (true) {
-                String fechaStr = val.leerdato("Ingrese la fecha del partido (yyyy-MM-dd): ", sc);
+                String fechaStr = Validation.leerdato("Ingrese la fecha del partido (yyyy-MM-dd): ", sc);
                 try {
                     fecha = dateFormatter.parse(fechaStr);
                     sm.setFecha(fecha);
@@ -73,7 +72,7 @@ public class ViewSchedulingMatch {
             SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
             Time hora = null;
             while (true) {
-                String horaStr = val.leerdato("Ingrese la hora del partido (HH:mm): ", sc);
+                String horaStr = Validation.leerdato("Ingrese la hora del partido (HH:mm): ", sc);
                 try {
                     hora = new Time(timeFormatter.parse(horaStr).getTime());
                     sm.setHora(hora);
@@ -84,11 +83,11 @@ public class ViewSchedulingMatch {
             }
 
             // Guardar el partido programado
-            controlador.programacionPartidos.put(controlador.programacionPartidos.size() + 1, sm);
+            // controlador.programacionPartidos.put(controlador.programacionPartidos.size() + 1, sm);
             System.out.println("Partido guardado exitosamente.\n");
 
             // Preguntar si desea programar otro partido
-            String continuar = val.leerdato("¿Desea programar otro partido? (s/n): ", sc);
+            String continuar = Validation.leerdato("¿Desea programar otro partido? (s/n): ", sc);
             if (!continuar.equalsIgnoreCase("s")) {
                 break;
             }
