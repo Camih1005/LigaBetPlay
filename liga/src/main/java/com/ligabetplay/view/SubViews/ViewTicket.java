@@ -1,9 +1,12 @@
 package com.ligabetplay.view.SubViews;
 
 import java.util.Scanner;
+import java.util.regex.MatchResult;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.Main;
+import com.ligabetplay.model.SchedulingMatch;
+import com.ligabetplay.model.Stadium;
 import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
 
@@ -30,13 +33,7 @@ public class ViewTicket {
 
             switch (choice) {
                 case 1:
-                    // addStadium();
-                    break;
-                case 2:
-                    // editStadium();
-                    break;
-                case 3:
-                    // deleteStadium();
+                        BuyTicket();
                     break;
                 case 4:
                     return;
@@ -46,6 +43,29 @@ public class ViewTicket {
             }
            
         }
+    }
+
+    public void BuyTicket(){
+       
+        boolean mostrarPartidos = mostrar.showMatch();
+        if(mostrarPartidos==false){
+            return;
+        }
+
+        int codigoPartido = Validation.leerNumero("Digite el id del partido que desea asistir: ",sc);
+        if(!controlador.jugadores.containsKey(codigoPartido)){
+            System.out.println("Error codigo no valido - No se puede comprar ticket");
+            return ;
+        }
+
+        //en mantenimiento
+
+        
+
+
+
+
+
 
     }
 

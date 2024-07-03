@@ -14,12 +14,12 @@ public class SchedulingMatch {
     private List<Goal> lstGoles;
     private List<Card> lstTarjetas;
     private List<Incident> lstIncidentes;
-    private String resultado;
+    private Result resultado;
 
     public SchedulingMatch() {}
 
     public SchedulingMatch(int id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio,
-            List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes, String resultado) {
+            List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes, Result resultado) {
         this.id = id;
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
@@ -105,11 +105,11 @@ public class SchedulingMatch {
         this.lstIncidentes = lstIncidentes;
     }
 
-    public String getResultado() {
+    public Result getResultado() {
         return resultado;
     }
 
-    public void setResultado(String resultado) {
+    public void setResultado(Result resultado) {
         this.resultado = resultado;
     }
 }
