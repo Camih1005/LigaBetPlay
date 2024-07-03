@@ -11,10 +11,14 @@ public class SchedulingMatch {
     private Date fecha;
     private Time hora;
     private Stadium estadio;
+<<<<<<< HEAD
     private List<Goal> lstGoles;
     private List<Card> lstTarjetas;
     private List<Incident> lstIncidentes;
     private Result resultado;
+=======
+    private String resultado;
+>>>>>>> a75af30 (cambios)
 
     public SchedulingMatch() {}
 
@@ -26,9 +30,6 @@ public class SchedulingMatch {
         this.fecha = fecha;
         this.hora = hora;
         this.estadio = estadio;
-        this.lstGoles = lstGoles;
-        this.lstTarjetas = lstTarjetas;
-        this.lstIncidentes = lstIncidentes;
         this.resultado = resultado;
     }
 
@@ -81,29 +82,6 @@ public class SchedulingMatch {
         this.estadio = estadio;
     }
 
-    public List<Goal> getLstGoles() {
-        return lstGoles;
-    }
-
-    public void setLstGoles(Goal goal) {
-        this.lstGoles.add(goal);
-    }
-
-    public List<Card> getLstTarjetas() {
-        return lstTarjetas;
-    }
-
-    public void setLstTarjetas(List<Card> lstTarjetas) {
-        this.lstTarjetas = lstTarjetas;
-    }
-
-    public List<Incident> getLstIncidentes() {
-        return lstIncidentes;
-    }
-
-    public void setLstIncidentes(List<Incident> lstIncidentes) {
-        this.lstIncidentes = lstIncidentes;
-    }
 
     public Result getResultado() {
         return resultado;

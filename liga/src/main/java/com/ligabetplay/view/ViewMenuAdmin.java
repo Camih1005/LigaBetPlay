@@ -6,6 +6,7 @@ import javax.crypto.spec.RC2ParameterSpec;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.view.SubViews.ViewReferee;
+import com.ligabetplay.view.SubViews.ViewResults;
 import com.ligabetplay.view.SubViews.ViewNewsAndCommunication;
 import com.ligabetplay.view.SubViews.ViewPlayer;
 import com.ligabetplay.view.SubViews.ViewSchedulingMatch;
@@ -27,9 +28,13 @@ public class ViewMenuAdmin {
         ViewNewsAndCommunication viewNews = new ViewNewsAndCommunication();
 <<<<<<< HEAD:liga/src/main/java/com/ligabetplay/view/ViewMenuAdmin.java
         ViewReferee viewMenuReferee = new ViewReferee(); 
+<<<<<<< HEAD
 =======
         
 >>>>>>> bdd0c32 (Cambios):liga/src/main/java/com/ligabetplay/view/ViewAdmin.java
+=======
+        ViewResults viewResults = new ViewResults();
+>>>>>>> a75af30 (cambios)
         Scanner sc = controlador.sc;
 
         System.out.println("Solo las opciones con asterisco se escuentran disponibles, En manteminiento");
@@ -70,7 +75,7 @@ public class ViewMenuAdmin {
                     viewSchedulingMatch.start();
                     break;
                 case 4:
-                    viewSchedulingMatch.registrarResultados();
+                    viewResults.registrarResultados();
                     break;
                 case 5:
                     viewNews.start();
