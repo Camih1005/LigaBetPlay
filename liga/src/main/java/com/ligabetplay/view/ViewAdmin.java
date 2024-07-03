@@ -7,7 +7,7 @@ import com.ligabetplay.view.SubViews.ViewPlayer;
 import com.ligabetplay.view.SubViews.ViewSchedulingMatch;
 import com.ligabetplay.view.SubViews.ViewStadium;
 import com.ligabetplay.view.SubViews.ViewTeam;
-import com.ligabetplay.view.SubViews.viewGestionCoach;
+import com.ligabetplay.view.SubViews.VistaCoach;
 
 public class ViewAdmin {
 
@@ -18,7 +18,7 @@ public class ViewAdmin {
         ViewStadium viewStadium = new ViewStadium();
         Controller controlador = Controller.getInstance();
         ViewSchedulingMatch viewSchedulingMatch = new ViewSchedulingMatch();
-        viewGestionCoach ViewGestionCoach = new viewGestionCoach();
+        VistaCoach gestionCoach = new VistaCoach();
         Scanner sc = controlador.sc;
         System.out.println("Solo las opciones con asterisco se escuentran disponibles, En manteminiento");
         while (true) {
@@ -64,7 +64,7 @@ public class ViewAdmin {
                     viewNews.start();
                     break;
                 case 6:
-                    ViewGestionCoach.start();
+                    gestionCoach.start();
                     break;
                 case 7:
                 System.out.println("AUN EN ARREGLOS");

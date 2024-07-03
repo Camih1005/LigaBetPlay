@@ -7,7 +7,7 @@ import com.ligabetplay.model.Coach;
 import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
 
-public class viewGestionCoach {
+public class VistaCoach {
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
     Validation val =  new Validation();
