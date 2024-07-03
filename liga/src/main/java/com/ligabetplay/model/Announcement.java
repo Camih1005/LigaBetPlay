@@ -1,19 +1,18 @@
 package com.ligabetplay.model;
 
-import java.util.Date;
 import java.util.List;
 
 public class Announcement {
     private Integer id;
     private String titulo;
     private String contenido;
-    private Date fechaPublicacion;
+    private String fechaPublicacion;
     private List <User> destinatarios;
 
     public Announcement() {
     }
 
-    public Announcement(Integer id, String titulo, String contenido, Date fechaPublicacion, List<User> destinatarios) {
+    public Announcement(Integer id, String titulo, String contenido, String fechaPublicacion, List<User> destinatarios) {
         this.id = id;
         this.titulo = titulo;
         this.contenido = contenido;
@@ -45,11 +44,11 @@ public class Announcement {
         this.contenido = contenido;
     }
 
-    public Date getFechaPublicacion() {
+    public String getFechaPublicacion() {
         return fechaPublicacion;
     }
 
-    public void setFechaPublicacion(Date fechaPublicacion) {
+    public void setFechaPublicacion(String fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
 
@@ -57,7 +56,7 @@ public class Announcement {
         return destinatarios;
     }
 
-    public void setDestinatarios(List<User> destinatarios) {
-        this.destinatarios = destinatarios;
+    public void setDestinatarios(User user) {
+        this.destinatarios.add(user);
     }
 }

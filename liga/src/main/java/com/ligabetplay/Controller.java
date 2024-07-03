@@ -3,11 +3,13 @@ package com.ligabetplay;
 import java.util.Hashtable;
 import java.util.Scanner;
 
+import com.ligabetplay.model.Announcement;
 import com.ligabetplay.model.Coach;
 import com.ligabetplay.model.Player;
 import com.ligabetplay.model.Rol;
 import com.ligabetplay.model.Stadium;
 import com.ligabetplay.model.Team;
+import com.ligabetplay.model.User;
 
 public class Controller {
 
@@ -17,7 +19,10 @@ public class Controller {
     public Hashtable<Integer, Team> equipos = new Hashtable<>();
     public Hashtable<Integer, Player> jugadores = new Hashtable<>();
     public Hashtable<Integer, Coach> entrenadores = new Hashtable<>();
-
+    public Hashtable<Integer, User> usuarios = new Hashtable<>();
+    public Hashtable<Integer, Announcement> comunicaciones = new Hashtable<>();
+    
+    
     private static Controller controlador;
 
     private Controller() {
