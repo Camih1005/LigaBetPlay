@@ -51,6 +51,30 @@ public class ShowValues {
     }
 
 
+    public boolean showUser(){
+        if(Controller.getInstance().usuarios.isEmpty()){
+            System.out.println("No hay usuarios disponibles");
+            return false;
+        }
+        Controller.getInstance().usuarios.forEach((key, value)-> 
+        System.out.println("codigo: " + key + ", Nombre: " + value.getNombre()));
+        return true;
+    }
+
+
+    public boolean showAnnouncements(){
+        if(Controller.getInstance().comunicaciones.isEmpty()){
+            System.out.println("No hay comunicaciones disponibles");
+            return false;
+        }
+        Controller.getInstance().comunicaciones.forEach((key, value)-> 
+        System.out.println("codigo: " + key + ", Nombre: " + value.getTitulo()));
+        return true;
+    }
+
+    
+
+
     // public boolean showMatch(){
     //     if(Controller.getInstance().partidos.isEmpty()){
     //         System.out.println("No hay partidos disponibles");
