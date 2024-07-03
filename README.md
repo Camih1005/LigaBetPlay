@@ -1,5 +1,4 @@
 # LigaBetPlay J3
 
-Christian Leonardo Celis Ardila \n
--
-Camilo Andres Hernandez Torres
++ Christian Leonardo Celis Ardila 
++ Camilo Andres Hernandez Torres
