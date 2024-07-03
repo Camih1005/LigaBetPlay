@@ -8,14 +8,17 @@ import java.util.*;
 import com.ligabetplay.Controller;
 import com.ligabetplay.Main;
 import com.ligabetplay.model.*;
+import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
 
 public class ViewSchedulingMatch {
 
-    public static void start() {
-        Controller controlador = Controller.getInstance();
-        Scanner sc = controlador.sc;
+    Controller controlador = Controller.getInstance();
+    Scanner sc = controlador.sc;
+    ShowValues mostrar = new ShowValues();
 
+    public void start() {
+       
         while (true) {
             Main.limpiarPantalla();
             SchedulingMatch sm = new SchedulingMatch();
@@ -24,13 +27,7 @@ public class ViewSchedulingMatch {
             int newId = controlador.programacionPartidos.size() + 1;
             sm.setId(newId);
 
-            // Mostrar equipos disponibles
-            System.out.println("╔════════════════════════════════════════════════════╗");
-            System.out.println("║                       EQUIPOS                      ║");
-            System.out.println("╠════════════════════════════════════════════════════╣");
-            for (Map.Entry<Integer, Team> entry : controlador.equipos.entrySet()) {
-                System.out.println("ID: " + entry.getKey() + ", Nombre: " + entry.getValue().getNombre());
-            }
+            mostrar.showTeam();
 
             // Ingresar equipo local
             int localId = Validation.leerNumero("\nIngrese el ID del equipo local: ", sc);
@@ -49,12 +46,7 @@ public class ViewSchedulingMatch {
             sm.setEquipoVisitante(controlador.equipos.get(visitanteId));
 
             // Mostrar estadios disponibles
-            System.out.println("╔════════════════════════════════════════════════════╗");
-            System.out.println("║                       ESTADIOS                     ║");
-            System.out.println("╠════════════════════════════════════════════════════╣");
-            for (Map.Entry<Integer, Stadium> entry : controlador.estadios.entrySet()) {
-                System.out.println("ID: " + entry.getKey() + ", Nombre: " + entry.getValue().getNombre());
-            }
+            mostrar.showStadiums();
 
             // Ingresar estadio
             int estadioId = Validation.leerNumero("Ingrese el ID del estadio: ", sc);
@@ -103,10 +95,7 @@ public class ViewSchedulingMatch {
         }
     }
 
-    public static void registrarResultados() {
-        Controller controlador = Controller.getInstance();
-        Validation val = new Validation();
-        Scanner sc = controlador.sc;
+    public void registrarResultados() {
 
         while (true) {
             // Mostrar partidos programados
@@ -118,7 +107,7 @@ public class ViewSchedulingMatch {
             }
 
             // Ingresar ID del partido para registrar resultados
-            int partidoId = val.leerNumero("\nIngrese el ID del partido para registrar resultados: ", sc);
+            int partidoId = Validation.leerNumero("\nIngrese el ID del partido para registrar resultados: ", sc);
             if (!controlador.programacionPartidos.containsKey(partidoId)) {
                 System.out.println("ID del partido no válido. Intente de nuevo.");
                 continue;
@@ -129,22 +118,22 @@ public class ViewSchedulingMatch {
             // Ingresar resultados
             List<Goal> lstGoles = new ArrayList<>();
             while (true) {
-                int golId = val.leerNumero("Ingrese el id del gol (0 para terminar): ", sc);
+                int golId = Validation.leerNumero("Ingrese el id del gol (0 para terminar): ", sc);
                 if (golId == 0)
                     break;
 
                 Goal goal = new Goal();
                 goal.setId(golId);
 
-                int jugadorId = val.leerNumero("Ingrese el id del jugador que anotó: ", sc);
+                int jugadorId = Validation.leerNumero("Ingrese el id del jugador que anotó: ", sc);
                 Player jugador = controlador.jugadores.get(jugadorId);
                 goal.setJugador(jugador);
 
-                int equipoId = val.leerNumero("Ingrese el id del equipo que anotó: ", sc);
+                int equipoId = Validation.leerNumero("Ingrese el id del equipo que anotó: ", sc);
                 Team equipo = controlador.equipos.get(equipoId);
                 goal.setEquipo(equipo);
 
-                int minuto = val.leerNumero("Ingrese el minuto del gol: ", sc);
+                int minuto = Validation.leerNumero("Ingrese el minuto del gol: ", sc);
                 goal.setMinuto(minuto);
 
                 goal.setPartido(partido);
@@ -153,11 +142,10 @@ public class ViewSchedulingMatch {
             partido.setLstGoles(lstGoles);
 
             List<Incident> lstIncidentes = new ArrayList<>();
-            String deseaIngresarIncidentes = val.leerdato("¿Desea ingresar incidentes del partido? (s/n): ", sc);
+            String deseaIngresarIncidentes = Validation.leerdato("¿Desea ingresar incidentes del partido? (s/n): ", sc);
             if (deseaIngresarIncidentes.equalsIgnoreCase("s")) {
                 while (true) {
-                    String incidentes = val
-                            .leerdato("Ingrese la descripción del incidente (deje vacío para terminar): ", sc);
+                    String incidentes = Validation.leerdato("Ingrese la descripción del incidente (deje vacío para terminar): ", sc);
                     if (incidentes.isEmpty())
                         break;
 
@@ -188,7 +176,7 @@ public class ViewSchedulingMatch {
             }
 
             // Preguntar si desea registrar resultados de otro partido
-            String continuar = val.leerdato("¿Desea registrar resultados de otro partido? (s/n): ", sc);
+            String continuar = Validation.leerdato("¿Desea registrar resultados de otro partido? (s/n): ", sc);
             if (!continuar.equalsIgnoreCase("s")) {
                 break;
             }

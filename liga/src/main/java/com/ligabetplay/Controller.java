@@ -7,6 +7,7 @@ import com.ligabetplay.model.Announcement;
 import com.ligabetplay.model.Coach;
 import com.ligabetplay.model.Incident;
 import com.ligabetplay.model.Player;
+import com.ligabetplay.model.Referee;
 import com.ligabetplay.model.Rol;
 import com.ligabetplay.model.SchedulingMatch;
 import com.ligabetplay.model.Stadium;
@@ -25,6 +26,8 @@ public class Controller {
     public Hashtable<Integer, Announcement> comunicaciones = new Hashtable<>();
     public Hashtable<Integer, SchedulingMatch> programacionPartidos = new Hashtable<>();
     public Hashtable<Integer, Incident> incident = new Hashtable<>();
+    public Hashtable<Integer, Referee> Arbitro = new Hashtable<>();
+    
 
     private static Controller controlador;
 

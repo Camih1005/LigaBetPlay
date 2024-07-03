@@ -21,15 +21,16 @@ public class ViewAdmin {
         VistaCoach gestionCoach = new VistaCoach();
         ViewNewsAndCommunication viewNews = new ViewNewsAndCommunication();
         Scanner sc = controlador.sc;
+
         System.out.println("Solo las opciones con asterisco se escuentran disponibles, En manteminiento");
         while (true) {
             System.out.println("╔════════════════════════════════════════════════════╗");
             System.out.println("║                   MENU ADMINISTRADOR               ║");
             System.out.println("╠════════════════════════════════════════════════════╣");
             System.out.println("║  1. Gestionar equipos *                            ║");
-            System.out.println("║  2. Gestionar jugadores                            ║");
+            System.out.println("║  2. Gestionar jugadores *                          ║");
             System.out.println("║  3. Programación de partidos *                     ║");
-            System.out.println("║  4. Registrar resultados de partidos               ║");
+            System.out.println("║  4. Registrar resultados de partidos  *            ║");
             System.out.println("║  5. Gestionar noticias y comunicados *             ║");
             System.out.println("║  6. Gestionar entrenadores *                       ║");
             System.out.println("║  7. Gestionar árbitros                             ║");
@@ -56,10 +57,10 @@ public class ViewAdmin {
                     viewPlayer.start();
                     break;
                 case 3:
-                    ViewSchedulingMatch.start();
+                    viewSchedulingMatch.start();
                     break;
                 case 4:
-                ViewSchedulingMatch.registrarResultados();
+                    viewSchedulingMatch.registrarResultados();
                     break;
                 case 5:
                     viewNews.start();
@@ -68,11 +69,10 @@ public class ViewAdmin {
                     gestionCoach.start();
                     break;
                 case 7:
-                System.out.println("AUN EN ARREGLOS");
+                    System.out.println("AUN EN ARREGLOS");
                     break;
                 case 8:
-                viewStadium.start();
-             
+                    viewStadium.start();
                 case 9:
                 System.out.println("AUN EN ARREGLOS");
                     break;
