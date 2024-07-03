@@ -3,11 +3,11 @@ package com.ligabetplay;
 import java.util.Scanner;
 import com.ligabetplay.model.*;
 import com.ligabetplay.view.Validation;
-import com.ligabetplay.view.ViewAdmin;
+import com.ligabetplay.view.ViewMenuAdmin;
 
-import com.ligabetplay.view.ViewFan;
-import com.ligabetplay.view.ViewJournalist;
-import com.ligabetplay.view.ViewReferee;
+import com.ligabetplay.view.ViewMenuFan;
+import com.ligabetplay.view.ViewMenuJournalist;
+import com.ligabetplay.view.ViewMenuReferee;
 
 
 public class Main {
@@ -60,19 +60,19 @@ public class Main {
     private static void mostrarMenu(Rol rol) {
         switch (rol) {
             case ADMINISTRADOR:
-                ViewAdmin.start();
+                ViewMenuAdmin.start();
                 break;
             case EQUIPO_TECNICO:
                 System.out.println("AUN EN ARREGLOS");
                 break;
             case ARBITRO:
-                ViewReferee.start();
+                ViewMenuReferee.start();
                 break;
             case PERIODISTA:
-                ViewJournalist.start();
+                ViewMenuJournalist.start();
                 break;
             case AFICIONADO:
-                ViewFan.start();
+                ViewMenuFan.start();
                 break;
             default:
                 System.out.println("Rol no reconocido.");

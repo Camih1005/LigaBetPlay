@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.ligabetplay.Controller;
 
 
-public class ViewReferee {
+public class ViewMenuReferee {
     public static void start() {
         Controller controlador = Controller.getInstance();
         Scanner sc = controlador.sc;

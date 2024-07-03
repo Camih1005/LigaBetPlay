@@ -1,7 +1,11 @@
 package com.ligabetplay.view;
 
 import java.util.Scanner;
+
+import javax.crypto.spec.RC2ParameterSpec;
+
 import com.ligabetplay.Controller;
+import com.ligabetplay.view.SubViews.ViewReferee;
 import com.ligabetplay.view.SubViews.ViewNewsAndCommunication;
 import com.ligabetplay.view.SubViews.ViewPlayer;
 import com.ligabetplay.view.SubViews.ViewSchedulingMatch;
@@ -9,7 +13,7 @@ import com.ligabetplay.view.SubViews.ViewStadium;
 import com.ligabetplay.view.SubViews.ViewTeam;
 import com.ligabetplay.view.SubViews.VistaCoach;
 
-public class ViewAdmin {
+public class ViewMenuAdmin {
 
     public static void start() {
        
@@ -20,6 +24,7 @@ public class ViewAdmin {
         ViewSchedulingMatch viewSchedulingMatch = new ViewSchedulingMatch();
         VistaCoach gestionCoach = new VistaCoach();
         ViewNewsAndCommunication viewNews = new ViewNewsAndCommunication();
+        ViewReferee viewMenuReferee = new ViewReferee(); 
         Scanner sc = controlador.sc;
 
         System.out.println("Solo las opciones con asterisco se escuentran disponibles, En manteminiento");
@@ -69,7 +74,7 @@ public class ViewAdmin {
                     gestionCoach.start();
                     break;
                 case 7:
-                    System.out.println("AUN EN ARREGLOS");
+                    viewMenuReferee.start();
                     break;
                 case 8:
                     viewStadium.start();

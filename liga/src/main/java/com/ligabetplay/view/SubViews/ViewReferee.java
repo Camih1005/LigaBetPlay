@@ -8,7 +8,7 @@ import com.ligabetplay.model.Referee;
 import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
 
-public class VistaReferee {
+public class ViewReferee {
 
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
