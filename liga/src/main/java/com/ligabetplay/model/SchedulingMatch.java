@@ -85,8 +85,8 @@ public class SchedulingMatch {
         return lstGoles;
     }
 
-    public void setLstGoles(List<Goal> lstGoles) {
-        this.lstGoles = lstGoles;
+    public void setLstGoles(Goal goal) {
+        this.lstGoles.add(goal);
     }
 
     public List<Card> getLstTarjetas() {

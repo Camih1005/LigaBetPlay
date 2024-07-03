@@ -16,6 +16,7 @@ public class ViewSchedulingMatch {
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
     ShowValues mostrar = new ShowValues();
+    SchedulingMatch schedulingMatch = new SchedulingMatch();
 
     public void start() {
        
@@ -116,7 +117,7 @@ public class ViewSchedulingMatch {
             SchedulingMatch partido = controlador.programacionPartidos.get(partidoId);
 
             // Ingresar resultados
-            List<Goal> lstGoles = new ArrayList<>();
+
             while (true) {
                 int golId = Validation.leerNumero("Ingrese el id del gol (0 para terminar): ", sc);
                 if (golId == 0)
@@ -137,9 +138,9 @@ public class ViewSchedulingMatch {
                 goal.setMinuto(minuto);
 
                 goal.setPartido(partido);
-                lstGoles.add(goal);
+                schedulingMatch.setLstGoles(goal);
             }
-            partido.setLstGoles(lstGoles);
+            partido.setLstGoles();
 
             List<Incident> lstIncidentes = new ArrayList<>();
             String deseaIngresarIncidentes = Validation.leerdato("¿Desea ingresar incidentes del partido? (s/n): ", sc);

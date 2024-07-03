@@ -25,6 +25,7 @@ public class Controller {
     public Hashtable<Integer, User> usuarios = new Hashtable<>();
     public Hashtable<Integer, Announcement> comunicaciones = new Hashtable<>();
     public Hashtable<Integer, SchedulingMatch> programacionPartidos = new Hashtable<>();
+    public Hashtable<Integer, SchedulingMatch> ResultadosParido = new Hashtable<>();
     public Hashtable<Integer, Incident> incident = new Hashtable<>();
     public Hashtable<Integer, Referee> Arbitro = new Hashtable<>();
     

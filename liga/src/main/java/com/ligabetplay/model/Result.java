@@ -5,6 +5,7 @@ public class Result {
     private SchedulingMatch partido;
     private int golesEquipoLocal;
     private int golesEquipoVisitante;
+    
 
     public Result() {
     }
