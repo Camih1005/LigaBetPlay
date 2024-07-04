@@ -25,10 +25,10 @@ public class Controller {
     public Hashtable<Integer, User> usuarios = new Hashtable<>();
     public Hashtable<Integer, Announcement> comunicaciones = new Hashtable<>();
     public Hashtable<Integer, SchedulingMatch> programacionPartidos = new Hashtable<>();
-    public Hashtable<Integer, SchedulingMatch> ResultadosParido = new Hashtable<>();
+    public Hashtable<Integer, SchedulingMatch> ResultadosPartido = new Hashtable<>();
     public Hashtable<Integer, Incident> incident = new Hashtable<>();
     public Hashtable<Integer, Referee> Arbitro = new Hashtable<>();
-    
+    public Hashtable<Integer, Incident> incidentes = new Hashtable<>();
 
     private static Controller controlador;
 
@@ -38,12 +38,16 @@ public class Controller {
 
     // DATOS BASE
 
+
+
     private void inicializarCredenciales() {
         credenciales.put(Rol.ADMINISTRADOR, "admin123");
         credenciales.put(Rol.EQUIPO_TECNICO, "tecnico123");
         credenciales.put(Rol.ARBITRO, "arbitro123");
         credenciales.put(Rol.PERIODISTA, "periodista123");
         credenciales.put(Rol.AFICIONADO, "aficionado123");
+
+        // 
 
         // ESTADIOS
 

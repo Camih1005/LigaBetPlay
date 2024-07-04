@@ -1,6 +1,7 @@
 package com.ligabetplay.model;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,28 +12,33 @@ public class SchedulingMatch {
     private Date fecha;
     private Time hora;
     private Stadium estadio;
-<<<<<<< HEAD
+    private Referee referee;
     private List<Goal> lstGoles;
     private List<Card> lstTarjetas;
     private List<Incident> lstIncidentes;
     private Result resultado;
-=======
-    private String resultado;
->>>>>>> a75af30 (cambios)
 
-    public SchedulingMatch() {}
+    public SchedulingMatch() {
+        this.lstGoles = new ArrayList<>();
+        this.lstTarjetas = new ArrayList<>();
+        this.lstIncidentes = new ArrayList<>();
+    }
 
     public SchedulingMatch(int id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio,
-            List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes, Result resultado) {
+                           Referee referee, List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes,
+                           Result resultado) {
         this.id = id;
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
         this.fecha = fecha;
         this.hora = hora;
         this.estadio = estadio;
+        this.referee = referee;
+        this.lstGoles = (lstGoles != null) ? lstGoles : new ArrayList<>();
+        this.lstTarjetas = (lstTarjetas != null) ? lstTarjetas : new ArrayList<>();
+        this.lstIncidentes = (lstIncidentes != null) ? lstIncidentes : new ArrayList<>();
         this.resultado = resultado;
     }
-
 
     public int getId() {
         return id;
@@ -62,8 +68,8 @@ public class SchedulingMatch {
         return fecha;
     }
 
-    public void setFecha(Date fecha2) {
-        this.fecha = fecha2;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public Time getHora() {
@@ -82,6 +88,37 @@ public class SchedulingMatch {
         this.estadio = estadio;
     }
 
+    public Referee getReferee() {
+        return referee;
+    }
+
+    public void setReferee(Referee referee) {
+        this.referee = referee;
+    }
+
+    public List<Goal> getLstGoles() {
+        return lstGoles;
+    }
+
+    public void addGoal(Goal goal) {
+        this.lstGoles.add(goal);
+    }
+
+    public List<Card> getLstTarjetas() {
+        return lstTarjetas;
+    }
+
+    public void setLstTarjetas(List<Card> lstTarjetas) {
+        this.lstTarjetas = lstTarjetas;
+    }
+
+    public List<Incident> getLstIncidentes() {
+        return lstIncidentes;
+    }
+
+    public void addIncident(Incident incident) {
+        this.lstIncidentes.add(incident);
+    }
 
     public Result getResultado() {
         return resultado;
