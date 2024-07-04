@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.ligabetplay.Controller;
 import com.ligabetplay.Main;
 import com.ligabetplay.model.Referee;
+import com.ligabetplay.model.SchedulingMatch;
 import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
 
@@ -51,6 +52,16 @@ public class ViewReferee {
     }
 
     public void addReferee(){
+
+        Boolean mostrarPartidos = mostrar.showMatch();
+        if(mostrarPartidos==false){return;}
+        
+        Integer codigoPartido = Validation.leerNumero("Digite el id del partido: ", sc);
+        if((!controlador.programacionPartidos.containsKey(codigoPartido))){
+            System.out.println("Error - Codigo no Valido");    
+            return;
+        }
+
         Referee arbitro = new Referee();
         Integer codigoArbitro = Validation.leerNumero("Digite el id del arbitro: ", sc);
 
@@ -63,6 +74,9 @@ public class ViewReferee {
         arbitro.setNombre(Validation.leerdato("Digite el nombre del Arbitro: ", sc));
         arbitro.setExperiencia(Validation.leerdato("Digite la experiencia del Arbitro: ", sc));
         controlador.Arbitro.put(codigoArbitro, arbitro);
+
+        controlador.programacionPartidos.get(codigoPartido).setArbitro(arbitro);
+        System.out.println("Arbitro Agregado a Partido");
 
         System.out.println("---------------------------------");
         System.out.println("Creacion del Arbitro exitosa");  
@@ -123,6 +137,15 @@ public class ViewReferee {
         }
         
         controlador.Arbitro.remove(codigoArbitro);
+
+        for (Integer key: controlador.programacionPartidos.keySet()) {
+            SchedulingMatch e = controlador.programacionPartidos.get(key);
+            if(e.getArbitro().getId()==codigoArbitro){
+                e.setArbitro(null);
+            }
+        }
+
+
         System.out.println("Arbitro Eliminado Exitosamente");
 
         return;

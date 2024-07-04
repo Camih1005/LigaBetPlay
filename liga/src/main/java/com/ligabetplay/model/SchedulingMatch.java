@@ -11,6 +11,7 @@ public class SchedulingMatch {
     private Date fecha;
     private Time hora;
     private Stadium estadio;
+    private Referee arbitro;
     private List<Goal> lstGoles;
     private List<Card> lstTarjetas;
     private List<Incident> lstIncidentes;
@@ -18,21 +19,24 @@ public class SchedulingMatch {
 
     public SchedulingMatch() {}
 
+   
+
     public SchedulingMatch(int id, Team equipoLocal, Team equipoVisitante, Date fecha, Time hora, Stadium estadio,
-            List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes, Result resultado) {
+            Referee arbitro, List<Goal> lstGoles, List<Card> lstTarjetas, List<Incident> lstIncidentes,
+            Result resultado) {
         this.id = id;
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
         this.fecha = fecha;
         this.hora = hora;
         this.estadio = estadio;
+        this.arbitro = arbitro;
         this.lstGoles = lstGoles;
         this.lstTarjetas = lstTarjetas;
         this.lstIncidentes = lstIncidentes;
         this.resultado = resultado;
     }
-
-
+    
     public int getId() {
         return id;
     }
@@ -85,24 +89,24 @@ public class SchedulingMatch {
         return lstGoles;
     }
 
-    public void setLstGoles(List<Goal> lstGoles) {
-        this.lstGoles = lstGoles;
+    public void setLstGoles(Goal goal) {
+        this.lstGoles.add(goal);
     }
 
     public List<Card> getLstTarjetas() {
         return lstTarjetas;
     }
 
-    public void setLstTarjetas(List<Card> lstTarjetas) {
-        this.lstTarjetas = lstTarjetas;
+    public void setLstTarjetas(Card card) {
+        this.lstTarjetas.add(card);
     }
 
     public List<Incident> getLstIncidentes() {
         return lstIncidentes;
     }
 
-    public void setLstIncidentes(List<Incident> lstIncidentes) {
-        this.lstIncidentes = lstIncidentes;
+    public void setLstIncidentes(Incident incident) {
+        this.lstIncidentes.add(incident);
     }
 
     public Result getResultado() {
@@ -112,4 +116,14 @@ public class SchedulingMatch {
     public void setResultado(Result resultado) {
         this.resultado = resultado;
     }
+
+    public Referee getArbitro() {
+        return arbitro;
+    }
+
+    public void setArbitro(Referee arbitro) {
+        this.arbitro = arbitro;
+    }
+
+    
 }

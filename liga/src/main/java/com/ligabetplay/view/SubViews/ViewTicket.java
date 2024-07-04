@@ -1,12 +1,8 @@
 package com.ligabetplay.view.SubViews;
 
 import java.util.Scanner;
-import java.util.regex.MatchResult;
-
 import com.ligabetplay.Controller;
 import com.ligabetplay.Main;
-import com.ligabetplay.model.SchedulingMatch;
-import com.ligabetplay.model.Stadium;
 import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
 
