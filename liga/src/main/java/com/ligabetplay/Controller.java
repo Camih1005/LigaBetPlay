@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.ligabetplay.model.Announcement;
 import com.ligabetplay.model.Coach;
 import com.ligabetplay.model.Incident;
+import com.ligabetplay.model.Injury;
 import com.ligabetplay.model.Player;
 import com.ligabetplay.model.Referee;
 import com.ligabetplay.model.Rol;
@@ -28,7 +29,8 @@ public class Controller {
     public Hashtable<Integer, SchedulingMatch> ResultadosPartido = new Hashtable<>();
     public Hashtable<Integer, Incident> incident = new Hashtable<>();
     public Hashtable<Integer, Referee> Arbitro = new Hashtable<>();
-    public Hashtable<Integer, Incident> incidentes = new Hashtable<>();
+    public Hashtable<Integer, Injury> lesiones= new Hashtable<>();
+    
 
     private static Controller controlador;
 

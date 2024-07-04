@@ -2,7 +2,6 @@ package com.ligabetplay.view;
 
 import java.util.Scanner;
 
-import javax.crypto.spec.RC2ParameterSpec;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.view.SubViews.ViewReferee;
@@ -13,7 +12,6 @@ import com.ligabetplay.view.SubViews.ViewSchedulingMatch;
 import com.ligabetplay.view.SubViews.ViewStadium;
 import com.ligabetplay.view.SubViews.ViewTeam;
 import com.ligabetplay.view.SubViews.VistaCoach;
-
 
 public class ViewMenuAdmin {
 
