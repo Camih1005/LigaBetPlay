@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.ligabetplay.Controller;
 import com.ligabetplay.view.SubViews.ViewReferee;
+import com.ligabetplay.view.SubViews.ViewResults;
 import com.ligabetplay.view.SubViews.ViewNewsAndCommunication;
 import com.ligabetplay.view.SubViews.ViewPlayer;
 import com.ligabetplay.view.SubViews.ViewSchedulingMatch;
@@ -24,6 +25,7 @@ public class ViewMenuAdmin {
         VistaCoach gestionCoach = new VistaCoach();
         ViewNewsAndCommunication viewNews = new ViewNewsAndCommunication();
         ViewReferee viewMenuReferee = new ViewReferee(); 
+        ViewResults viewResults = new ViewResults();
         Scanner sc = controlador.sc;
 
         System.out.println("Solo las opciones con asterisco se escuentran disponibles, En manteminiento");
@@ -64,7 +66,7 @@ public class ViewMenuAdmin {
                     viewSchedulingMatch.start();
                     break;
                 case 4:
-                    viewSchedulingMatch.registrarResultados();
+                    viewResults.registrarResultados();
                     break;
                 case 5:
                     viewNews.start();

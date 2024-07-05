@@ -1,6 +1,7 @@
 package com.ligabetplay.model;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class SchedulingMatch {
     private Date fecha;
     private Time hora;
     private Stadium estadio;
+    private Referee arbitro;
     private Referee arbitro;
     private List<Goal> lstGoles;
     private List<Card> lstTarjetas;
@@ -65,8 +67,8 @@ public class SchedulingMatch {
         return fecha;
     }
 
-    public void setFecha(Date fecha2) {
-        this.fecha = fecha2;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public Time getHora() {
@@ -116,6 +118,16 @@ public class SchedulingMatch {
     public void setResultado(Result resultado) {
         this.resultado = resultado;
     }
+
+    public Referee getArbitro() {
+        return arbitro;
+    }
+
+    public void setArbitro(Referee arbitro) {
+        this.arbitro = arbitro;
+    }
+
+    
 
     public Referee getArbitro() {
         return arbitro;
