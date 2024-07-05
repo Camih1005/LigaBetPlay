@@ -126,75 +126,42 @@ public class Controller {
 
         // EQUIPOS
 
-        Team team1 = new Team();
-        team1.setId(1);
-        team1.setNombre("Atlético Nacional");
-        team1.setCiudad("Medellín");
-        team1.setCoach("Paulo Autuori");
-        equipos.put(1, team1);
-
-        Team team2 = new Team();
-        team2.setId(2);
-        team2.setNombre("Millonarios");
-        team2.setCiudad("Bogotá");
-        team2.setCoach("Alberto Gamero");
-        equipos.put(2, team2);
-
-        Team team3 = new Team();
-        team3.setId(3);
-        team3.setNombre("América de Cali");
-        team3.setCiudad("Cali");
-        team3.setCoach("Lucas González");
-        equipos.put(3, team3);
-
-        Team team4 = new Team();
-        team4.setId(4);
-        team4.setNombre("Independiente Medellín");
-        team4.setCiudad("Medellín");
-        team4.setCoach("David González");
-        equipos.put(4, team4);
-
-        Team team5 = new Team();
-        team5.setId(5);
-        team5.setNombre("Deportivo Cali");
-        team5.setCiudad("Cali");
-        team5.setCoach("Jorge Luis Pinto");
-        equipos.put(5, team5);
+        
 
         Team team6 = new Team();
-        team6.setId(6);
+        team6.setId(1);
         team6.setNombre("Santa Fe");
         team6.setCiudad("Bogotá");
         team6.setCoach("Harold Rivera");
-        equipos.put(6, team6);
-
-        Team team7 = new Team();
-        team7.setId(7);
-        team7.setNombre("Junior");
-        team7.setCiudad("Barranquilla");
-        team7.setCoach("Alexis Mendoza");
-        equipos.put(7, team7);
-
-        Team team8 = new Team();
-        team8.setId(8);
-        team8.setNombre("Once Caldas");
-        team8.setCiudad("Manizales");
-        team8.setCoach("Pedro Sarmiento");
-        equipos.put(8, team8);
-
-        Team team9 = new Team();
-        team9.setId(9);
-        team9.setNombre("Deportivo Pereira");
-        team9.setCiudad("Pereira");
-        team9.setCoach("Alejandro Restrepo");
-        equipos.put(9, team9);
+        equipos.put(1, team6);
 
         Team team10 = new Team();
-        team10.setId(10);
+        team10.setId(2);
         team10.setNombre("Atlético Bucaramanga");
         team10.setCiudad("Bucaramanga");
         team10.setCoach("Rafael Dudamel");
-        equipos.put(10, team10);
+        equipos.put(2, team10);
+
+        //JUGADORES
+
+        Player player = new Player();
+        player.setId(1);
+        player.setPosicion("Delantero");
+        player.setNacionalidad("Bumanguez");
+        player.setNumeroCamiseta(9);
+        player.setNombre("Cristian Zapata");
+        player.setEquipo(equipos.get(2));
+        jugadores.put(1, player);
+        //
+        Player player2 = new Player();
+
+        player2.setId(2);
+        player2.setPosicion("Defensa");
+        player2.setNacionalidad("Rolo");
+        player2.setNumeroCamiseta(10);
+        player2.setNombre("Hugo Rodallega");
+        player2.setEquipo(equipos.get(1));
+        jugadores.put(2, player2);
 
     }
 

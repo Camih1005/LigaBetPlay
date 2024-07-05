@@ -79,7 +79,7 @@ public class ViewPlayer {
                 int codigoEquipo = Validation.leerNumero("Digite el codigo del equipo: ",sc);
                 if(!controlador.equipos.containsKey(codigoEquipo)){ System.out.println("Error codigo no valido"); bandera=false;}
                     if(bandera==true){
-                    jugador.setEquipo(controlador.equipos.get(codigoEquipo).getNombre());
+                    jugador.setEquipo(controlador.equipos.get(codigoEquipo));
                     controlador.equipos.get(codigoEquipo).getLstJugadores().add(jugador);
                     System.out.println("Jugador añadido al equipo");}   
             }

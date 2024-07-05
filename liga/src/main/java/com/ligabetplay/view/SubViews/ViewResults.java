@@ -1,7 +1,4 @@
 package com.ligabetplay.view.SubViews;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -12,6 +9,7 @@ import com.ligabetplay.model.Player;
 import com.ligabetplay.model.Result;
 import com.ligabetplay.model.SchedulingMatch;
 import com.ligabetplay.model.Team;
+import com.ligabetplay.view.ShowValues;
 import com.ligabetplay.view.Validation;
 
 public class ViewResults {
@@ -49,7 +47,9 @@ public class ViewResults {
 
                 Goal goal = new Goal();
                 goal.setId(golId);
-
+                //
+               ShowValues showValues = new ShowValues();
+               showValues.showPlayer();
                 int jugadorId = Validation.leerNumero("Ingrese el id del jugador que anotó: ", sc);
                 Player jugador = controlador.jugadores.get(jugadorId);
                 goal.setJugador(jugador);

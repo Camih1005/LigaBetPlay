@@ -8,7 +8,7 @@ public class Player extends Person{
     private String posicion;
     private String nacionalidad;
     private int numeroCamiseta;
-    private String equipo;
+    private Team equipo;
     private List<Injury> lstLesiones;
     private List<Performance> lstRendimientos;
     
@@ -19,7 +19,7 @@ public class Player extends Person{
     }
 
     public Player(int id, String nombre, int edad, String posicion, String nacionalidad, int numeroCamiseta,
-            String equipo, List<Injury> lstLesiones, List<Performance> lstRendimientos) {
+            Team equipo, List<Injury> lstLesiones, List<Performance> lstRendimientos) {
         super(id, nombre);
         this.edad = edad;
         this.posicion = posicion;
@@ -62,11 +62,11 @@ public class Player extends Person{
         this.numeroCamiseta = numeroCamiseta;
     }
 
-    public String getEquipo() {
+    public Team getEquipo() {
         return equipo;
     }
 
-    public void setEquipo(String equipo) {
+    public void setEquipo(Team equipo) {
         this.equipo = equipo;
     }
 
@@ -84,5 +84,11 @@ public class Player extends Person{
 
     public void setLstRendimientos(Performance performance) {
         this.lstRendimientos.add(performance);
+    }
+
+    @Override
+    public String toString() {
+        return "Player [equipo=" + equipo + ", getId()=" + getId() + ", getNombre()=" + getNombre() + ", getPosicion()="
+                + getPosicion() + ", getNumeroCamiseta()=" + getNumeroCamiseta() + "]";
     }
 }
