@@ -12,6 +12,7 @@ public class ViewCoach {
         Controller controlador = Controller.getInstance();
         ViewPlayer viewPlayer = new ViewPlayer();
         Scanner sc = controlador.sc;
+        ViewInjury viewInjury = new ViewInjury();
 
         while (true) {
             System.out.println("╔════════════════════════════════════════════════════╗");
@@ -22,7 +23,7 @@ public class ViewCoach {
             System.out.println("║  3. Gestionar entrenadores                         ║");
             System.out.println("║  4. Generar informes                               ║");            
             System.out.println("║  5. Consultar calendario de partidos               ║");
-            System.out.println("║  6. Gestionar lesiones de los jugadores            ║");
+            System.out.println("║  6. Gestionar lesiones de los jugadores *          ║");
             System.out.println("║  7. Gestionar entrenamientos                       ║");
             System.out.println("║  8. Seguimiento de rendimiento de jugadores        ║");
             System.out.println("║  9. Gestionar de equipamiento                      ║");
@@ -50,7 +51,7 @@ public class ViewCoach {
                 System.out.println("AUN EN ARREGLOS");
                     break;
                 case 6:
-                System.out.println("AUN EN ARREGLOS");
+                    viewInjury.start();
                     break;
                 case 7:
                 System.out.println("AUN EN ARREGLOS");

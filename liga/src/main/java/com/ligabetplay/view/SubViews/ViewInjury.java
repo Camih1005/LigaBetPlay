@@ -1,5 +1,6 @@
 package com.ligabetplay.view.SubViews;
 
+import java.util.Date;
 import java.util.Scanner;
 
 import com.ligabetplay.Controller;
@@ -21,9 +22,9 @@ public class ViewInjury {
         System.out.println("Gestion de Lesiones de Jugadores");
 
           while (true) {
-            System.out.println("\n1. Agregar Arbitro");
-            System.out.println("2. Editar Arbitro");
-            System.out.println("3. Eliminar Arbitro");
+            System.out.println("\n1. Agregar lesion");
+            System.out.println("2. Editar lesion");
+            System.out.println("3. Eliminar lesion");
             System.out.println("4. Volver");
 
             choice = Integer.parseInt(Validation.leerdato("Elija una opcion: ", controlador.sc));
@@ -69,10 +70,18 @@ public class ViewInjury {
 
         Injury lesion = new Injury();
         lesion.setId(codigoLesion);
+        lesion.setJugador(controlador.jugadores.get(codigoJugador));
+        lesion.setLesion(Validation.leerdato("Digite la lesion del jugador", sc));
+        lesion.setGravedad(Validation.leerdato("Digite la gravedad de la lesion", sc));
+        Date fechaInicio = Validation.LeerFecha("Ingrese la fecha de la lesion (yyyy-MM-dd): ", sc);
+        lesion.setFechaInicion(fechaInicio);
+        Date fechaFinalizacion = Validation.LeerFecha("Ingrese la fecha de la lesion (yyyy-MM-dd): ", sc);
+        lesion.setFechaFinalizacion(fechaFinalizacion);
         
-        //continuara;
-        
-        // controlador.lesiones.put(codigoLesion,)
+        controlador.lesiones.put(codigoLesion,lesion);
+        controlador.jugadores.get(codigoJugador).setLstLesiones(lesion);
+
+
 
     }
 

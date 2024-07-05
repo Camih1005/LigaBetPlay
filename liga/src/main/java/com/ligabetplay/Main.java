@@ -8,6 +8,7 @@ import com.ligabetplay.view.ViewMenuAdmin;
 import com.ligabetplay.view.ViewMenuFan;
 import com.ligabetplay.view.ViewMenuJournalist;
 import com.ligabetplay.view.ViewMenuReferee;
+import com.ligabetplay.view.SubViews.ViewCoach;
 
 
 public class Main {
@@ -15,7 +16,6 @@ public class Main {
     public static void main(String[] args) {
         Controller controlador = Controller.getInstance();
         Scanner sc = controlador.sc;
-
         while (true) {
 
             System.out.println("1. Ingresar como ADMINISTRADOR");
@@ -63,7 +63,7 @@ public class Main {
                 ViewMenuAdmin.start();
                 break;
             case EQUIPO_TECNICO:
-                System.out.println("AUN EN ARREGLOS");
+                ViewCoach.start();
                 break;
             case ARBITRO:
                 ViewMenuReferee.start();

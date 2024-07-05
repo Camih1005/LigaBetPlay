@@ -1,5 +1,9 @@
 package com.ligabetplay.view;
 
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Validation {
@@ -55,6 +59,48 @@ public class Validation {
             return false;
         }
     }
+
+
+    public static Date LeerFecha(String msg, Scanner sc){
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = null;
+        while (true) {
+            String fechaStr = Validation.leerdato(msg, sc);
+            String[] fechaC = fechaStr.split("-");
+            if(fechaC.length!=3){
+                System.out.println("Formato no valido");
+                continue;
+            }
+            if(fechaC[0].length()==4 && fechaC[1].length()==2 && fechaC[2].length()==2 && IsInteger(String.valueOf(fechaC[0]))==true && IsInteger(String.valueOf(fechaC[1]))==true && IsInteger(String.valueOf(fechaC[2]))==true ){
+                try {
+                    fecha = dateFormatter.parse(fechaStr);
+                    return fecha;
+                } catch (ParseException e) {
+                    System.out.println("Formato de fecha no válido. Intente de nuevo.");
+                }
+            }else{
+                System.out.println("Formato no valido");
+                continue;
+            }
+            fecha = null; 
+        }
+    }
+
+    public static Time leerHora(String msg, Scanner sc){
+        SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
+        Time hora = null;
+        while (true) {
+            String horaStr = Validation.leerdato(msg, sc);
+            try {
+                hora = new Time(timeFormatter.parse(horaStr).getTime());
+                return hora;
+            } catch (ParseException e) {
+                System.out.println("Formato de hora no válido. Intente de nuevo.");
+            }
+            hora = null;
+        }
+    }
+
 
 
 }
