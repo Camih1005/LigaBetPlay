@@ -13,7 +13,7 @@ import com.ligabetplay.view.SubViews.ViewSchedulingMatch;
 import com.ligabetplay.view.SubViews.ViewStadium;
 import com.ligabetplay.view.SubViews.ViewTeam;
 import com.ligabetplay.view.SubViews.VistaCoach;
-import com.ligabetplay.view.SubViews.VistaReferee;
+
 
 public class ViewMenuAdmin {
 
@@ -26,15 +26,8 @@ public class ViewMenuAdmin {
         ViewSchedulingMatch viewSchedulingMatch = new ViewSchedulingMatch();
         VistaCoach gestionCoach = new VistaCoach();
         ViewNewsAndCommunication viewNews = new ViewNewsAndCommunication();
-<<<<<<< HEAD:liga/src/main/java/com/ligabetplay/view/ViewMenuAdmin.java
         ViewReferee viewMenuReferee = new ViewReferee(); 
-<<<<<<< HEAD
-=======
-        
->>>>>>> bdd0c32 (Cambios):liga/src/main/java/com/ligabetplay/view/ViewAdmin.java
-=======
         ViewResults viewResults = new ViewResults();
->>>>>>> a75af30 (cambios)
         Scanner sc = controlador.sc;
 
         System.out.println("Solo las opciones con asterisco se escuentran disponibles, En manteminiento");
@@ -84,11 +77,7 @@ public class ViewMenuAdmin {
                     gestionCoach.start();
                     break;
                 case 7:
-<<<<<<< HEAD:liga/src/main/java/com/ligabetplay/view/ViewMenuAdmin.java
                     viewMenuReferee.start();
-=======
-
->>>>>>> bdd0c32 (Cambios):liga/src/main/java/com/ligabetplay/view/ViewAdmin.java
                     break;
                 case 8:
                     viewStadium.start();

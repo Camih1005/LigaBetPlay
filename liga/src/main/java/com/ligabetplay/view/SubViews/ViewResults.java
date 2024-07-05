@@ -18,8 +18,9 @@ public class ViewResults {
 
     Controller controlador = Controller.getInstance();
     Scanner sc = controlador.sc;
-    Result result = new Result(); 
- public void registrarResultados() {
+    Result result = new Result();
+
+    public void registrarResultados() {
 
         while (true) {
             // Mostrar partidos programados
@@ -57,45 +58,59 @@ public class ViewResults {
                 Team equipo = controlador.equipos.get(equipoId);
                 goal.setEquipo(equipo);
 
-                int minuto = Validation.leerNumero("Ingrese el minuto del gol: ", sc);
+                int minuto;
+                try {
+                    minuto = Validation.leerNumero("Ingrese el minuto del gol: ", sc);
+                } catch (NumberFormatException e) {
+                    System.out.println("Entrada inválida para el minuto. Debe ser un número entero. Intente de nuevo.");
+                    continue;
+                }
+
                 goal.setMinuto(minuto);
-
                 goal.setPartido(partido);
-                result.setLstGoles(goal);
+                partido.addGoal(goal);
             }
-            partido.setLstGoles();
 
-            List<Incident> lstIncidentes = new ArrayList<>();
+            controlador.ResultadosPartido.put(partidoId, partido);
+
             String deseaIngresarIncidentes = Validation.leerdato("¿Desea ingresar incidentes del partido? (s/n): ", sc);
             if (deseaIngresarIncidentes.equalsIgnoreCase("s")) {
                 while (true) {
-                    String incidentes = Validation.leerdato("Ingrese la descripción del incidente (deje vacío para terminar): ", sc);
-                    if (incidentes.isEmpty())
+                    String incidentes = Validation
+                            .leerdato("Ingrese la descripción del incidente (n para salir o s para dijotar otro): ", sc);
+                    if (incidentes == "n"){
                         break;
-
+                    }else{
                     Incident incident = new Incident();
                     incident.setDescripcion(incidentes);
-                    lstIncidentes.add(incident);
+                    int minuto;
+                    try {
+                        minuto = Validation.leerNumero("Ingrese el minuto del incidente: ", sc);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Entrada inválida para el minuto. Debe ser un número entero. Intente de nuevo.");
+                        continue;
+                    }
+
+                    incident.setMinuto(minuto);
+                    incident.setPartido(partido);
+                    partido.addIncident(incident);
+                }
                 }
             }
-            partido.setLstIncidentes(lstIncidentes);
-
-            controlador.programacionPartidos.put(partidoId, partido);
 
             System.out.println("\nResultado registrado:");
-            System.out
-                    .println(partido.getEquipoLocal().getNombre() + " vs " + partido.getEquipoVisitante().getNombre());
+            System.out.println(partido.getEquipoLocal().getNombre() + " vs " + partido.getEquipoVisitante().getNombre());
             System.out.println("Goles:");
-            for (Goal goal : lstGoles) {
+            for (Goal goal : partido.getLstGoles()) {
                 System.out.println("Gol ID: " + goal.getId() + ", Jugador: " + goal.getJugador().getNombre()
                         + ", Equipo: " + goal.getEquipo().getNombre() + ", Minuto: " + goal.getMinuto());
             }
 
             // Mostrar incidentes si existen
-            if (!lstIncidentes.isEmpty()) {
+            if (!partido.getLstIncidentes().isEmpty()) {
                 System.out.println("Incidentes:");
-                for (Incident incident : lstIncidentes) {
-                    System.out.println("Descripción: " + incident.getDescripcion());
+                for (Incident incident : partido.getLstIncidentes()) {
+                    System.out.println("Descripción: " + incident.getDescripcion() + ", Minuto: " + incident.getMinuto());
                 }
             }
 
