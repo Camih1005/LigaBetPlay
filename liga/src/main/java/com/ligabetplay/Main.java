@@ -17,7 +17,7 @@ public class Main {
         Controller controlador = Controller.getInstance();
         Scanner sc = controlador.sc;
         while (true) {
-
+            System.out.println("Contraseña admin : admin123");
             System.out.println("1. Ingresar como ADMINISTRADOR");
             System.out.println("2. Ingresar como EQUIPO TECNICO");
             System.out.println("3. Ingresar como ARBITRO");

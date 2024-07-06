@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.ligabetplay.Controller;
 import com.ligabetplay.view.SubViews.ViewReferee;
 import com.ligabetplay.view.SubViews.ViewResults;
+import com.ligabetplay.view.SubViews.ViewInjury;
 import com.ligabetplay.view.SubViews.ViewNewsAndCommunication;
 import com.ligabetplay.view.SubViews.ViewPlayer;
 import com.ligabetplay.view.SubViews.ViewSchedulingMatch;
@@ -26,6 +27,8 @@ public class ViewMenuAdmin {
         ViewNewsAndCommunication viewNews = new ViewNewsAndCommunication();
         ViewReferee viewMenuReferee = new ViewReferee(); 
         ViewResults viewResults = new ViewResults();
+        ViewInjury viewInjury = new ViewInjury();
+        
         Scanner sc = controlador.sc;
 
         System.out.println("Solo las opciones con asterisco se escuentran disponibles, En manteminiento");
@@ -39,11 +42,11 @@ public class ViewMenuAdmin {
             System.out.println("║  4. Registrar resultados de partidos  *            ║");
             System.out.println("║  5. Gestionar noticias y comunicados *             ║");
             System.out.println("║  6. Gestionar entrenadores *                       ║");
-            System.out.println("║  7. Gestionar árbitros                             ║");
+            System.out.println("║  7. Gestionar árbitros   *                         ║");
             System.out.println("║  8. Gestionar estadios *                           ║");
             System.out.println("║  9. Gestionar patrocinios                          ║");
             System.out.println("║ 10. Generar informes                               ║");
-            System.out.println("║ 11. Generar incidentes o sanciones                 ║");
+            System.out.println("║ 11. Generar incidentes o sanciones   *             ║");
             System.out.println("║ 12. Gestionar medios de comunicación               ║");
             System.out.println("║ 13. Gestionar transferencias de jugadores          ║");
             System.out.println("║ 14. Gestionar equipamientos                        ║");
@@ -86,7 +89,7 @@ public class ViewMenuAdmin {
                 System.out.println("AUN EN ARREGLOS");
                     break;
                 case 11:
-                System.out.println("AUN EN ARREGLOS");
+                viewInjury.start();
                     break;
                 case 12:
                 System.out.println("AUN EN ARREGLOS");
